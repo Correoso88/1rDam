@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d4e9d5;
+}
+
+h1 {
+    font-family: "Science Gothic";
+}
+
+h1,
+h2 {
+    color: #2e7d32;
+}
+
+section,
+header,
+footer,
+article,
+nav {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px;
+}
+
+a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration-line: none;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+button,
+select {
+    width: 100%;
+    border: 1px solid #4ac352;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    transition-property: all;
+}
+
+button {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #4ac352;
+    box-shadow: 0 0 10px blue;
+}
+.divTable{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    gap: 7px;
+}
+.comentario{
+    border:1px solid grey;
+    padding:1px;
+    margin:3px;
+    border-radius: 5px;
+}
+.titulo{
+    font-weight: bold;
+    background-color: #2e7d32;
+    color:white;
+    padding:1px;
+    margin:3px;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina els espais entre les cel·les, "fusiona los bordes" */
+}
+
+th {
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+}
+.div1{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    width: 100%;
+}
+img{
+    width: 100px;
+}
+@media (max-width:768px){
+    .div1{
+        flex-direction:column;
+    }
+    .divTable{
+        grid-template-columns: 1fr;
+    }
+    .divTable > .titulo{
+        display: none;
+    }
+    .divTable > .comentario:nth-child(3n+1),
+    .divTable > .comentario:nth-child(3n+2){
+        display: none;
+    }   
+}
+@media (max-width:1024px){
+        .divTable{
+        grid-template-columns: 1fr 2fr;
+    }
+    .divTable > .titulo{
+        display: none;
+    }
+    .divTable > .comentario:nth-child(3n+2){
+        display: none;
+    }
+    
+}
+@media (min-width:1024px){
+
+}

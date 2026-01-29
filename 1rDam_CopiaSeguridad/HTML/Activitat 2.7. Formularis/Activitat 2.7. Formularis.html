@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta lang="Es">
+        <meta name="Ejercicio 2.7" content="Formulario">
+        <title>Formulario</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <form action="Activitat 2.7. Formularis_confirmacion.html">
+            <label>Nom:
+                <input type="text" id="nom" name="nom" required placeholder="Nom">
+            </label>
+            <label>Edad:
+                <input type="text" id="edad" name="edad" required placeholder="Edad" min="18" max="120">
+            </label>
+            <label>Correu electronic:
+                <input type="email" id="correu" name="correu" required placeholder="Correu">
+            </label>
+            <label>Contrasenya:
+                <input type="password" id="contrasenya" required name="contrasenya" placeholder="Contrasenya" min="6" max="12">
+            </label>
+            <label>
+                <select name="consolas" size="9" multiple="8">
+                    <optgroup label="Consoles de casa">
+                    <option>PS5</option>
+                    <option>Xbox</option>
+                    <option>Xbox Serie X</option>
+                    <option>Xbox Serie S</option>
+                    <option>Otras consolas de casa</option>
+                    <optgroup label="Consoles Portàtils">
+                    <option>Nintendo Switch 2,</option>
+                    <option>Nintendo Switch Lite</option>
+                    <option>Otras consolas portatiles.</option>
+                </select>
+            </label>
+            <label>
+                Castellano<input type="radio" id="idcastellano" name="contrasenya">
+            </label>
+                
+                Catalan<input type="radio" id="idcatalan" name="catalan">
+                Ingles<input type="radio" id="idingles" name="ingles">
+            
+            <input type="checkbox" id="not_correo" name="not_correo"  >
+            <label>Acecta los terminos y condiciones
+            </label>
+            <label>Comentaris
+                <textarea name="textArea" cols="50" rows="7" placeholder="Comentaris"></textarea>
+            </label>
+            <button name="boton1">Enviar</button>
+        </form>
+    </body>
+</html>

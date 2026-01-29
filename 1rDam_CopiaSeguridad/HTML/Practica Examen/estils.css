@@ -1,0 +1,40 @@
+h1,h2{
+    color:#2e7d32
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+button{
+    color:white;
+    background-color:#2e7d32;
+    font-size:large;
+    width: 100%;
+}
+button:hover{
+    color:white;
+    background-color:#8bc34a;
+}
+input{
+    border-color:#a5d6a7;
+    
+}
+textarea{
+    border-color:#a5d6a7;
+    width: 100%;
+}
+thead{
+    
+    background-color:#2e7d32;
+    color:white;
+}
+table{
+    text-align: center;
+    font-size:20px;
+    width: 100%;
+    
+}
+.grande{
+    width: 100%;
+}
+

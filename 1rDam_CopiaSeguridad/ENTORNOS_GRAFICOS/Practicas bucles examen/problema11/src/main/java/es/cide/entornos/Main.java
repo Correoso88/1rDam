@@ -27,8 +27,8 @@ public class Main {
             }
         }
         
-        System.out.println(p);
-        System.out.println(q);
+     //   System.out.println(p);
+       // System.out.println(q);
 
     }
 }

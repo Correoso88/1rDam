@@ -15,8 +15,10 @@ public class Main {
         boton.addActionListener(new ActionListener() {//Creo el Listener
             public void actionPerformed(ActionEvent ev) {//Creo el metodo
                 String texto = texto1.getText();//Creo una variable para guardar el contenido del textfield
+                if(!texto.isEmpty()){//Si el txto no esta vacio
                 modelo.addElement(texto);//le añado el modelo y lo meto en la lista
                 texto1.setText("");//Lo meto en la lista
+                }
             }
         });
         ventana.setLayout(new BorderLayout());//Hago un borderLayout para separar los elementos

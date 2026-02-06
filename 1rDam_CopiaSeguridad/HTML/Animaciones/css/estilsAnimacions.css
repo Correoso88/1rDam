@@ -1,0 +1,36 @@
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+ 
+img{
+    height: 1000px;
+    width: 725px;
+    padding: 5px;
+    margin: 5px;
+    
+}
+h1{
+    position: sticky;
+    top: 0%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    animation-name: titulo;
+    background-color: rgb(77,72,72);
+    text-align: center;
+    animation-timeline: scroll(root);
+
+}
+@keyframes titulo {
+  from {
+    
+  }
+  to {
+    font-size: 15px;
+    background-color: rgba(128, 128, 128, 0.5);
+    color: black;
+  }
+}

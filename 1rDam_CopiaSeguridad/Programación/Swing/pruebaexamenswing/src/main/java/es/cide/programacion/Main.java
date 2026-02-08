@@ -1,13 +1,39 @@
 package es.cide.programacion;
 
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import java.awt.*;
-import java.awt.event.*;
-
 public class Main {
+    private static int contvoc(String s, char vocalBuscada) {
+        // Caso base: si la cadena está vacía, no hay más caracteres que contar
+        if (s.length() == 0) {
+            return 0;
+        } else {
+            // Comparamos el primer carácter de la cadena con la vocal buscada
+            if (s.charAt(0) == vocalBuscada) {
+                // Si coincide, sumamos 1 y llamamos recursivamente con el resto de la cadena
+                return 1 + contvoc(s.substring(1), vocalBuscada);
+            } else {
+                // Si no coincide, solo llamamos recursivamente con el resto de la cadena
+                return contvoc(s.substring(1), vocalBuscada);
+            }
+        }
+    }
     public static void main(String[] args) {
         JFrame ventanaPrincipal = new JFrame();
         ventanaPrincipal.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -26,13 +52,11 @@ public class Main {
         String[] genero = { "Acción", "Comedia", "Drama", "Terror", "Ciencia Ficción" };// Creo un array con los generos
         JComboBox<String> generocombo = new JComboBox<>(genero); // meto los generos en el combo box
         panelPrincipal.add(generocombo);
-
         generocombo.addActionListener(e -> {//Si presionas el boton
             String titulo1 = (String) generocombo.getSelectedItem();
             if(titulo1.equals("Terror")){
                 JOptionPane.showMessageDialog(panelPrincipal,"CUIDADO QUE DA MIEDITO :D");
             }
-            
         });
 
         // Slider de años
@@ -56,12 +80,15 @@ public class Main {
         });
 
         // Boton de fitxa
+        
         JButton MostrarFitxaboton = new JButton("Mostrar Fitxa");
         JLabel MostrarFitxa = new JLabel("");
         panelPrincipal.add(MostrarFitxaboton, BorderLayout.CENTER);
         panelPrincipal.add(MostrarFitxa);
+
         // Listener para el boton de Mostrar Fitxa
         MostrarFitxaboton.addActionListener(new ActionListener() {// Creo el Listener
+            @Override
             public void actionPerformed(ActionEvent ev) {
                 String Titulo = NombrePeli.getText();
                 String AñoElegido = MostrarAño.getText();
@@ -75,18 +102,31 @@ public class Main {
         String[] vocales = { "A", "E", "I", "O", "U" };// Creo un array con las vocales
         JComboBox<String> vocalescomboBox = new JComboBox<>(vocales); // meto las vocales en el combo box
         panelPrincipal.add(vocalescomboBox);
+        JLabel TotalVocal= new JLabel();
 
         // Listener para las vocales
         JButton contarVocales = new JButton("Contar Vocales");
         panelPrincipal.add(contarVocales);
         contarVocales.addActionListener(new ActionListener() {// Creo el Listener
+            @Override
             public void actionPerformed(ActionEvent ev) {
-                String peli = NombrePeli.getText();
-                String vocales;
+                // Obtenemos el título de la película y lo convertimos a minúsculas
+                // para hacer la comparación sin importar mayúsculas/minúsculas
+                String Titulo = NombrePeli.getText().toLowerCase();
+
+                // Obtenemos la vocal seleccionada del ComboBox
+                String vocalSeleccionada = ((String) vocalescomboBox.getSelectedItem()).toLowerCase();
+                // Extraemos el primer carácter (la vocal) como tipo char
+                char vocalChar = vocalSeleccionada.charAt(0);
+
+                // Llamamos al método recursivo para contar cuántas veces aparece esa vocal
+                int num = contvoc(Titulo, vocalChar);
+
+                // Mostramos el resultado en la etiqueta
+                TotalVocal.setText(String.valueOf("Numero de vocales: "+num));
             }
         });
-        panelPrincipal.add(new JLabel("Numero de vocales:"));
-
+        panelPrincipal.add(TotalVocal);
         ventanaPrincipal.add(panelPrincipal);
         ventanaPrincipal.setVisible(true);
     }

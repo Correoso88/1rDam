@@ -74,8 +74,9 @@ SELECT TITOL,AUTOR,COUNT(*) FROM LLIBRES WHERE UPPER(TITOL) LIKE'M%' AND UPPER(A
 -- 11. Llistar la quantitat de llibres agrupats per autor, ordenat per quantitat descendent:
 -- Columnes: autor, quantitat llibres
 
-
+SELECT AUTOR, COUNT(*) FROM LLIBRES GROUP BY AUTOR ORDER BY COUNT(*) DESC;
 
 -- 12. Llista les diferents lletres inicials dels titols dels llibres i el preu promig dels llibres amb un títol que comenci per aquesta lletra. Ordena per preu ascendent:
 -- Columnes: Lletra inicial títol, preu mitjà
 
+SELECT SUBSTR(TITOL,1,1), AVG(PREU) FROM LLIBRES GROUP BY TITOL ORDER BY AVG(PREU);

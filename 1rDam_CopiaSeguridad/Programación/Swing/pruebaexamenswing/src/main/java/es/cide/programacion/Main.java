@@ -67,7 +67,6 @@ public class Main {
         panelPrincipal.add(new JLabel("Año de estreno"));
         JSlider slider = new JSlider(1900, 2025, 2000);
         slider.setMajorTickSpacing(100);
-        slider.setMinorTickSpacing(25);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         panelPrincipal.add(slider);

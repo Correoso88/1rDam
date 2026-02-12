@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class Main {
+    public static String operador = "";
     public static void main(String[] args) {
         JFrame ventana = new JFrame("Seleccionar SO");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,6 +30,7 @@ public class Main {
         JPanel PanelDeControl = new JPanel();
         String numeroAnterior = "";
         String actual = "";
+        
         PanelDeControl.setLayout(new GridLayout(4, 4));
 
         JButton nueve = new JButton("9");
@@ -57,6 +59,14 @@ public class Main {
         });
 
         JButton dividir = new JButton("/");
+        //Listener de dividir
+        dividir.addActionListener(new ActionListener() {// Creo el Listener
+            public void actionPerformed(ActionEvent ev) {// Creo el metodo
+                operador = "/";
+                textoEntrada.setText(""+Mostrar.getText());
+                Mostrar.setText("");
+            }
+        });
         JButton seis = new JButton("6");
         // Listener para el seis
         seis.addActionListener(new ActionListener() {// Creo el Listener
@@ -81,6 +91,14 @@ public class Main {
             }
         });
         JButton multiplicar = new JButton("*");
+        //Listener de multiplicar
+        multiplicar.addActionListener(new ActionListener() {// Creo el Listener
+            public void actionPerformed(ActionEvent ev) {// Creo el metodo
+                operador = "*";
+                textoEntrada.setText(""+Mostrar.getText());
+                Mostrar.setText("");
+            }
+        });
 
         JButton tres = new JButton("3");
         // Listener para el tres
@@ -106,13 +124,21 @@ public class Main {
             }
         });
         JButton menos = new JButton("-");
+        //Listener de restar
+        menos.addActionListener(new ActionListener() {// Creo el Listener
+            public void actionPerformed(ActionEvent ev) {// Creo el metodo
+                operador = "-";
+                textoEntrada.setText(""+Mostrar.getText());
+                Mostrar.setText("");
+            }
+        });
         JButton borrar = new JButton("C");
 
         //Listener para borrar
         borrar.addActionListener(new ActionListener() {// Creo el Listener
             public void actionPerformed(ActionEvent ev) {// Creo el metodo
                 Mostrar.setText("");
-                textoEntrada.setText("");
+
             }
         });
 
@@ -124,7 +150,39 @@ public class Main {
             }
         });
         JButton mas = new JButton("+");
+        mas.addActionListener(new ActionListener() {// Creo el Listener
+            public void actionPerformed(ActionEvent ev) {// Creo el metodo
+                operador = "+";
+                textoEntrada.setText(""+Mostrar.getText());
+                Mostrar.setText("");
+            }
+        });
+
+        //Listener de igual
         JButton igual = new JButton("=");
+        igual.addActionListener(new ActionListener() {// Creo el Listener
+            public void actionPerformed(ActionEvent ev) {// Creo el metodo
+                int num2;
+                int num1;
+                switch (operador) {
+                    case "+":
+                        num
+                        break;
+                    case "-":
+                        
+                        break;
+                    case "*":
+                        
+                        break;
+                    case "/":
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
+        });
         PanelDeControl.add(nueve);
         PanelDeControl.add(ocho);
         PanelDeControl.add(siete);

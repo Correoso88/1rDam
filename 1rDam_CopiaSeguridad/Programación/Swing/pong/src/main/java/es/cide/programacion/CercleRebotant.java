@@ -11,7 +11,7 @@ import java.awt.event.*;
 // Classe que representa un panell on es dibuixa un cercle que rebota
 public class CercleRebotant extends JPanel implements ActionListener {
     private int x = 800, y = 450;// Coordenadas iniciales del circulo
-    private int dx = 2, dy = 2;// Velocitat del moviment en X i Y
+    private int dx = 4, dy = 4;// Velocitat del moviment en X i Y
     private final int RADI = 20; // Radio del circulo
     private final int DELAY = 10;// Retardo del temporizador en milisegundos
     private Timer timer; // Temporitzador para controlar l'animacion
@@ -36,14 +36,13 @@ public class CercleRebotant extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D) g;// Conversion a Graphics2D para mejorar el dibuix
         g2d.setColor(Color.black); // Define el color del cercle
         g2d.fillOval(x, y, RADI * 2, RADI * 2); // Dibuja el circulo con las coordenadas y el radio
-        g2d.fillRect(x1, y1, 10, 80); //Dibujar el primer Rectangulo
-        g2d.fillRect(x2, y2, 10, 80); //Dibujo el segundo rectangulo
+        g2d.fillRect(x1, y1, 10, 80); // Dibujar el primer Rectangulo
+        g2d.fillRect(x2, y2, 10, 80); // Dibujo el segundo rectangulo
     }
 
     // Metodos que s'executa a cada tic del temporizador per moure el cerce
     @Override
     public void actionPerformed(ActionEvent e) {
-        Rectangle hitboxpelota = new Rectangle(x,y,4,4);
         // Comprueba si el circulo toca los bordes horizontales
         if (x + 2 * RADI >= getWidth() || x <= 0) {
             dx = -dx;// Invierte la dirección vertical
@@ -57,15 +56,21 @@ public class CercleRebotant extends JPanel implements ActionListener {
         repaint(); // Redibuja el panel para actualizar la posicion del circulo
 
         // Rectangulo 1
-        
-        if(hitboxpelota){
-            dx1 = -dx;
+        if (x - RADI < x1 && y >= y1 && y <= y1 + getHeight()) {
+            dx = -dx;
+        }
+
+        // Rectangulo 2
+        if (x - RADI > x1 && y >= y1 && y <= y1 + getHeight()) {
+            dx = -dx;
         }
 
     }
-    //Creo las variables de el primer rectangulo
-    public static int x1 = 50, y1 = 50; //Coordenadas iniciales del 
+
+    // Creo las variables de el primer rectangulo
+    public static int x1 = 50, y1 = 50; // Coordenadas iniciales del
     public static int x2 = 1500, y2 = 50;// Coordenadas iniciales del rectangulo 2
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Pong"); // Creo la ventana
@@ -75,24 +80,26 @@ public class CercleRebotant extends JPanel implements ActionListener {
                 @Override
                 public void keyTyped(KeyEvent e) {
                 }
+
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    
+                    if (e.getKeyCode() == KeyEvent.VK_W) {
+                        y1 = y1 - 30;
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_S) {
+                        y1 = y1 + 30;
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_UP) {
+                        y2 = y2 - 30;
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                        y2 = y2 + 30;
+                    }
                 }
+
                 @Override
                 public void keyReleased(KeyEvent e) {
-                    if(e.getKeyCode() == KeyEvent.VK_W){
-                        y1=y1-30;
-                    }
-                    if(e.getKeyCode() == KeyEvent.VK_S){
-                        y1=y1+30;
-                    }
-                    if(e.getKeyCode() == KeyEvent.VK_UP){
-                        y2=y2-30;
-                    }
-                    if(e.getKeyCode() == KeyEvent.VK_DOWN){
-                        y2=y2+30;
-                    }
+
                 }
             });
             frame.add(circulo);

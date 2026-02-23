@@ -2,14 +2,12 @@ package es.cide.programacion;
 
 import javax.swing.*;
 
-import es.cide.Rectangulo1;
-
 import java.awt.*;
 //Classe que representa el palo del jugador
 import java.awt.event.*;
 
 // Classe que representa un panell on es dibuixa un cercle que rebota
-public class CercleRebotant extends JPanel implements ActionListener {
+public class POONG extends JPanel implements ActionListener {
     private int x = 800, y = 450;// Coordenadas iniciales del circulo
     private int dx = 4, dy = 4;// Velocitat del moviment en X i Y
     private final int RADI = 20; // Radio del circulo
@@ -23,7 +21,7 @@ public class CercleRebotant extends JPanel implements ActionListener {
     private int dx2 = 2, dy2 = 2;// Velocitat del moviment en X i Y
 
     // Constructor que inicia el panel i inicia el temporizador
-    public CercleRebotant() {
+    public POONG() {
         setBackground(Color.white); // Define el color del panel
         timer = new Timer(DELAY, this); // Crea el temporizador amb retard especificat
         timer.start();// Inicia el temporizador
@@ -61,7 +59,7 @@ public class CercleRebotant extends JPanel implements ActionListener {
         }
 
         // Rectangulo 2
-        if (x - RADI > x1 && y >= y1 && y <= y1 + getHeight()) {
+        if (x + RADI < x1 && y >= y1 && y <= y1 + getHeight()) {
             dx = -dx;
         }
 
@@ -74,8 +72,8 @@ public class CercleRebotant extends JPanel implements ActionListener {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Pong"); // Creo la ventana
-            JPanel panelPrincipal = new JPanel();
-            CercleRebotant circulo = new CercleRebotant(); // Crea una instancia del panell
+            JPanel paneljuego = new JPanel();
+            POONG circulo = new POONG(); // Crea una instancia del panell
             frame.addKeyListener(new KeyListener() {
                 @Override
                 public void keyTyped(KeyEvent e) {

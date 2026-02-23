@@ -31,13 +31,18 @@ public class POONG extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.drawString(contador1,50,40);
+        g.drawString(contador2,1500,40);
+
         Graphics2D g2d = (Graphics2D) g;// Conversion a Graphics2D para mejorar el dibuix
         g2d.setColor(Color.black); // Define el color del cercle
         g2d.fillOval(x, y, RADI * 2, RADI * 2); // Dibuja el circulo con las coordenadas y el radio
         g2d.fillRect(x1, y1, 10, 80); // Dibujar el primer Rectangulo
         g2d.fillRect(x2, y2, 10, 80); // Dibujo el segundo rectangulo
-    }
 
+    }
+    
     // Metodos que s'executa a cada tic del temporizador per moure el cerce
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -62,17 +67,20 @@ public class POONG extends JPanel implements ActionListener {
         if (x + RADI < x1 && y >= y1 && y <= y1 + getHeight()) {
             dx = -dx;
         }
+        
 
     }
 
     // Creo las variables de el primer rectangulo
     public static int x1 = 50, y1 = 50; // Coordenadas iniciales del
     public static int x2 = 1500, y2 = 50;// Coordenadas iniciales del rectangulo 2
+    public static String contador1 = "0"; //Contador del jugador 1
+    public static String contador2 = "0"; //Contador del jugador 2
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Pong"); // Creo la ventana
-            JPanel paneljuego = new JPanel();
+            JFrame frame = new JFrame("Pong");
+
             POONG circulo = new POONG(); // Crea una instancia del panell
             frame.addKeyListener(new KeyListener() {
                 @Override
@@ -101,7 +109,7 @@ public class POONG extends JPanel implements ActionListener {
                 }
             });
             frame.add(circulo);
-            frame.setSize(1600, 900);// Define lo que medira el frame
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);// Centra la ventana a la pantalla
             frame.setVisible(true);// Enseña la ventana

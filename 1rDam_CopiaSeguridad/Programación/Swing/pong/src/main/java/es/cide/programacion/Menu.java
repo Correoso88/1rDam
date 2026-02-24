@@ -19,8 +19,8 @@ public class Menu extends JFrame {
         // Titulo
         gbc.gridx = 0;
         gbc.gridy = 0;
-        JLabel titulo = new JLabel("Bienvenido a POONG", SwingConstants.CENTER);
-        panelmenu.add(titulo, gbc);
+        JLabel jugadornombre1 = new JLabel("Bienvenido a POONG", SwingConstants.CENTER);
+        panelmenu.add(jugadornombre1, gbc);
 
         // Jugador 1 label
         gbc.gridx = 0;
@@ -30,8 +30,8 @@ public class Menu extends JFrame {
         // Jugador 1 textfield
         gbc.gridx = 0;
         gbc.gridy = 2;
-        JTextField jugador1 = new JTextField(20);
-        panelmenu.add(jugador1, gbc);
+        JTextField jugadornombre2 = new JTextField(20);
+        panelmenu.add(jugadornombre2, gbc);
 
         // Jugador 2 label
         gbc.gridx = 0;
@@ -49,8 +49,10 @@ public class Menu extends JFrame {
         gbc.gridy = 5;
         JButton bjugar = new JButton("Jugar");
         bjugar.addActionListener(e -> {
-            dispose(); // cierra el menú
-            POONG.main(new String[0]); // ejecuta el main de POONG tal como está
+            POONG.Nombre1 = jugadornombre2.getText();
+            POONG.Nombre2 = jugador2.getText();
+            dispose();
+            POONG.main(new String[0]);
         });
 
         panelmenu.add(bjugar, gbc);
@@ -67,5 +69,7 @@ public class Menu extends JFrame {
 
     public static void main(String[] args) {
         new Menu();
+        POONG.getNombre1();
+
     }
 }

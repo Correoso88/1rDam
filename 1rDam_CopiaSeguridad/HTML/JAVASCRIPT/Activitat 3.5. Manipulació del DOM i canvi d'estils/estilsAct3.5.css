@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+p {
+    font-size: 16px;
+    color: red;
+}
+button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#contenidor {
+    margin-top: 20px;
+}
+
+.nouEstil {
+    color: lightblue;
+    font-weight: bold;
+}

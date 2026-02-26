@@ -8,8 +8,8 @@ import java.awt.event.*;
 
 // Classe que representa un panell on es dibuixa un cercle que rebota
 public class POONG extends JPanel implements ActionListener {
-    private int x = 800, y = 450;// Coordenadas iniciales del circulo
-    private int dx = 10, dy = 10;// Velocitat del moviment en X i Y
+    private int x = getWidth() / 2, y = getHeight() / 2;// Coordenadas iniciales del circulo
+    private int dx = 5, dy = 5;// Velocitat del moviment en X i Y
     private final int RADI = 20; // Radio del circulo
     private final int DELAY = 10;// Retardo del temporizador en milisegundos
     private Timer timer; // Temporitzador para controlar l'animacion
@@ -27,6 +27,12 @@ public class POONG extends JPanel implements ActionListener {
         timer.start();// Inicia el temporizador
     }
 
+    // Pongo tamaño a el width y al height
+    private int rec1w = 10;
+    private int rec1y = 80;
+    private int rec2w = 10;
+    private int rec2y = 80;
+
     // Metodo para dibujar el circulo dentro del panel
     @Override
     protected void paintComponent(Graphics g) {
@@ -38,8 +44,8 @@ public class POONG extends JPanel implements ActionListener {
         Graphics2D g2d = (Graphics2D) g;// Conversion a Graphics2D para mejorar el dibuix
         g2d.setColor(Color.black); // Define el color del cercle
         g2d.fillOval(x, y, RADI * 2, RADI * 2); // Dibuja el circulo con las coordenadas y el radio
-        g2d.fillRect(x1, y1, 10, 80); // Dibujar el primer Rectangulo
-        g2d.fillRect(x2, y2, 10, 80); // Dibujo el segundo rectangulo
+        g2d.fillRect(x1, y1, rec1w, rec1y); // Dibujar el primer Rectangulo
+        g2d.fillRect(x2, y2, rec1w, rec1y); // Dibujo el segundo rectangulo
 
     }
 
@@ -59,33 +65,32 @@ public class POONG extends JPanel implements ActionListener {
         repaint(); // Redibuja el panel para actualizar la posicion del circulo
         int DIA = RADI * 2;
         // Rectangulo 1
-        if (x <= x1 + 10 && x >= x1 && y >= y1 && y <= y1 + 80) {
+        if (x <= x1 + rec1w && x + DIA >= x1 && y + DIA >= y1 && y <= y1 + rec1y) {
             dx = -dx;
         }
 
         // Rectangulo 2
-        if (x + DIA <= x2 + 10 && x + DIA >= x2 && y + DIA >= y2 && y + DIA <= y2 + 80) {
+        if (x <= x2 + rec2w && x + DIA >= x2 && y + DIA >= y2 && y <= y2 + rec2y) {
             dx = -dx;
         }
 
-        // Hago que se reinicie la pelota y que sume al contador si llegan al borde sin
-        // tocar la pala
-        if (x == 1520) {
-            x = 800;
-            y = 450;
+        // Hago que se reinicie la pelota y que sume al contador si llegan al borde sin tocar la pala
+        if (x == getWidth()-80) {
+            x = getWidth()/2;
+            y = getHeight()/2;
             int contador1i = Integer.parseInt(contador1);
             contador1i++;
             contador1 = String.valueOf(contador1i);
         }
         if (x == 0) {
-            x = 800;
-            y = 450;
+            x = getWidth()/ 2;
+            y = getHeight()/ 2;
             int contador2i = Integer.parseInt(contador2);
             contador2i++;
             contador2 = String.valueOf(contador2i);
         }
 
-        //Si los rectangulos van a cifras negativas que se ponga en el 0
+        // Si los rectangulos sobrepasasn lo bajo de la pantalla que ponga 0
         if (y1 <= 0) {
             y1 = 0;
         }
@@ -93,21 +98,14 @@ public class POONG extends JPanel implements ActionListener {
             y2 = 0;
         }
 
-        //Si los rectangulos sobrepasan el alto de la pantalla, el rectangulo se ponga en el maximo alto
+        // Si los rectangulos sobrepasan el alto de la pantalla, el rectangulo se ponga
+        // en el maximo alto
         if (y1 + 80 > getHeight()) {
-            y1 = getHeight() - 80;
+            y1 = getHeight() - rec1y;
         }
 
         if (y2 + 80 > getHeight()) {
-            y2 = getHeight() - 80;
-        }
-
-        if (contador1.equals("10")) {
-            contador1 = "";
-            JOptionPane.showMessageDialog(null, "" + Nombre1 + " es el ganador");
-
-            new Menu();
-
+            y2 = getHeight() - rec2y;
         }
 
     }

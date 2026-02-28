@@ -1,10 +1,18 @@
 package es.cide.programacion;
 
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import java.awt.*;
-//Classe que representa el palo del jugador
-import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 // Classe que representa un panell on es dibuixa un cercle que rebota
 public class POONG extends JPanel implements ActionListener {
@@ -64,27 +72,31 @@ public class POONG extends JPanel implements ActionListener {
         y += dy;
         repaint(); // Redibuja el panel para actualizar la posicion del circulo
         int DIA = RADI * 2;
-        // Rectangulo 1
+
+        // Si la pelota toca un lado de el rectangulo 1
         if (x <= x1 + rec1w && x + DIA >= x1 && y + DIA >= y1 && y <= y1 + rec1y) {
-            dx = -dx;
+            dx = -dx; // Se inviere la direccion horizontal
         }
 
-        // Rectangulo 2
+        // Si la pelota toca un lado de el rectangulo 2
         if (x <= x2 + rec2w && x + DIA >= x2 && y + DIA >= y2 && y <= y2 + rec2y) {
-            dx = -dx;
+            dx = -dx; // Se inviere la direccion horizontal
         }
 
-        // Hago que se reinicie la pelota y que sume al contador si llegan al borde sin tocar la pala
-        if (x == getWidth()-80) {
-            x = getWidth()/2;
-            y = getHeight()/2;
+        // Hago que se reinicie la pelota y que sume al contador si llegan al borde sin
+        // tocar la pala
+        if (x == getWidth() - 80) {
+            x = getWidth() / 2;
+            y = getHeight() / 2;
+            // Cambio el String del contador del dibuja para poder sumar
             int contador1i = Integer.parseInt(contador1);
             contador1i++;
             contador1 = String.valueOf(contador1i);
         }
         if (x == 0) {
-            x = getWidth()/ 2;
-            y = getHeight()/ 2;
+            x = getWidth() / 2;
+            y = getHeight() / 2;
+            // Cambio el String del contador del dibuja para poder sumar
             int contador2i = Integer.parseInt(contador2);
             contador2i++;
             contador2 = String.valueOf(contador2i);
@@ -110,8 +122,7 @@ public class POONG extends JPanel implements ActionListener {
 
     }
 
-    // Creo las variables de el primer rectangulo
-    public static int x1 = 50, y1 = 50; // Coordenadas iniciales del
+    public static int x1 = 50, y1 = 50; // Coordenadas iniciales del rectangulo 1
     public static int x2 = 1530, y2 = 50;// Coordenadas iniciales del rectangulo 2
     public static String contador1 = "0"; // Contador del jugador 1
     public static String contador2 = "0"; // Contador del jugador 2
@@ -122,21 +133,22 @@ public class POONG extends JPanel implements ActionListener {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Pong");
 
-            POONG circulo = new POONG(); // Crea una instancia del panell
+            POONG circulo = new POONG();
             frame.addKeyListener(new KeyListener() {
                 @Override
                 public void keyTyped(KeyEvent e) {
                 }
 
+                // Hago el movimiento de las palas asi
                 @Override
                 public void keyPressed(KeyEvent e) {
-                    if (e.getKeyCode() == KeyEvent.VK_W) {
-                        y1 = y1 - 30;
+                    if (e.getKeyCode() == KeyEvent.VK_W) { // Si le das a la W
+                        y1 = y1 - 30; // Que la altura de el rec1 baje...
                     }
                     if (e.getKeyCode() == KeyEvent.VK_S) {
                         y1 = y1 + 30;
                     }
-                    if (e.getKeyCode() == KeyEvent.VK_UP) {
+                    if (e.getKeyCode() == KeyEvent.VK_UP) {// Si le das a la flecha de arriba
                         y2 = y2 - 30;
                     }
                     if (e.getKeyCode() == KeyEvent.VK_DOWN) {
@@ -151,13 +163,9 @@ public class POONG extends JPanel implements ActionListener {
             frame.add(circulo);
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setLocationRelativeTo(null);// Centra la ventana a la pantalla
-            frame.setVisible(true);// Enseña la ventana
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
 
         });
-    }
-
-    public static void getNombre1() {
-        throw new UnsupportedOperationException("Unimplemented method 'getNombre1'");
     }
 }

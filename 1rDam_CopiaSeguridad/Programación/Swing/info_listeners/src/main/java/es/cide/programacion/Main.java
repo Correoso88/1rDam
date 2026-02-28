@@ -1,3 +1,4 @@
+package es.cide.programacion;
 import javax.swing.*;
 import java.awt.*;
 

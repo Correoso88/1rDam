@@ -1,7 +1,18 @@
 package es.cide.programacion;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 public class Menu extends JFrame {
     public Menu() {
@@ -75,13 +86,14 @@ public class Menu extends JFrame {
 
         // Boton jugar
         gbc.gridy = 8;
-        gbc.weighty = 0.1; 
+        gbc.weighty = 0.1; //Para que quede mas espacio
         JButton bjugar = new JButton("Jugar");
         bjugar.setFont(new Font("Comic Sans MS", Font.BOLD, 28));
         bjugar.addActionListener(e -> {
-            POONG.Nombre1 = jugadornombre2.getText();
+            //Guardo los nombres para el POONG
+            POONG.Nombre1 = jugadornombre2.getText(); 
             POONG.Nombre2 = jugador2.getText();
-            dispose();
+            dispose(); //Cerrar ventana
             POONG.main(new String[0]);
         });
         panelmenu.add(bjugar, gbc);
@@ -92,6 +104,5 @@ public class Menu extends JFrame {
 
     public static void main(String[] args) {
         new Menu();
-        POONG.getNombre1();
     }
 }

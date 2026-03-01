@@ -54,6 +54,7 @@ public class POONG extends JPanel implements ActionListener {
         g2d.fillOval(x, y, RADI * 2, RADI * 2); // Dibuja el circulo con las coordenadas y el radio
         g2d.fillRect(x1, y1, rec1w, rec1y); // Dibujar el primer Rectangulo
         g2d.fillRect(x2, y2, rec1w, rec1y); // Dibujo el segundo rectangulo
+        g2d.fillRect(800, 0, 3, getHeight()); // Dibujo la linea del medio
 
     }
 

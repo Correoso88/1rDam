@@ -19,7 +19,7 @@ public class Menu extends JFrame {
         setSize(500, 550); // Más grande para que títulos y botones grandes quepan
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
+        //USo el UI manager para generalizar la fuente que yo quiera
         Font fuenteLetra = new Font("Comic Sans MS", Font.PLAIN, 16);
         UIManager.put("Label.font", fuenteLetra);
         UIManager.put("Button.font", fuenteLetra);
@@ -86,14 +86,14 @@ public class Menu extends JFrame {
 
         // Boton jugar
         gbc.gridy = 8;
-        gbc.weighty = 0.1; //Para que quede mas espacio
+        gbc.weighty = 0.1;
         JButton bjugar = new JButton("Jugar");
         bjugar.setFont(new Font("Comic Sans MS", Font.BOLD, 28));
         bjugar.addActionListener(e -> {
             //Guardo los nombres para el POONG
             POONG.Nombre1 = jugadornombre2.getText(); 
             POONG.Nombre2 = jugador2.getText();
-            dispose(); //Cerrar ventana
+            dispose(); 
             POONG.main(new String[0]);
         });
         panelmenu.add(bjugar, gbc);

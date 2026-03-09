@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -16,11 +18,12 @@ import javax.swing.Timer;
 
 // Classe que representa un panell on es dibuixa un cercle que rebota
 public class POONG extends JPanel implements ActionListener {
-    private int x = getWidth() / 2, y = getHeight() / 2;// Coordenadas iniciales del circulo
+    private int x = 800, y = 400;// Coordenadas iniciales del circulo
     private int dx = 5, dy = 5;// Velocitat del moviment en X i Y
     private final int RADI = 20; // Radio del circulo
     private final int DELAY = 10;// Retardo del temporizador en milisegundos
     private Timer timer; // Temporitzador para controlar l'animacion
+    private Image imagenFondo;
 
     // Cords Rectangulo1
     private int dx1 = 2, dy1 = 2;// Velocitat del moviment en X i Y
@@ -30,6 +33,9 @@ public class POONG extends JPanel implements ActionListener {
 
     // Constructor que inicia el panel i inicia el temporizador
     public POONG() {
+        // Carga la imagen 
+        imagenFondo = new ImageIcon(getClass().getResource("/es/cide/programacion/pista.png")).getImage();
+
         setBackground(Color.white); // Define el color del panel
         timer = new Timer(DELAY, this); // Crea el temporizador amb retard especificat
         timer.start();// Inicia el temporizador
@@ -45,26 +51,33 @@ public class POONG extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+
+        if (imagenFondo != null) {
+            g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        }
+
         g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.setColor(Color.white);
         g.drawString(Nombre1 + ": " + contador1, 50, 40);
-        g.drawString(Nombre2 + ": " + contador2, 1450, 40);
+        g.drawString(Nombre2 + ": " + contador2, getWidth() - 150, 40);
 
         Graphics2D g2d = (Graphics2D) g;// Conversion a Graphics2D para mejorar el dibuix
         g2d.setColor(Color.black); // Define el color del cercle
         g2d.fillOval(x, y, RADI * 2, RADI * 2); // Dibuja el circulo con las coordenadas y el radio
+        
+        x2 = getWidth() - 50 - rec2w; // Ajuste dinámico de la pala derecha
+        
         g2d.fillRect(x1, y1, rec1w, rec1y); // Dibujar el primer Rectangulo
         g2d.fillRect(x2, y2, rec1w, rec1y); // Dibujo el segundo rectangulo
-        g2d.fillRect(800, 0, 3, getHeight()); // Dibujo la linea del medio
+        g.setColor(Color.white);
+        g2d.fillRect(getWidth() / 2 - 1, 0, 3, getHeight()); // Dibujo la linea del medio ajustada y el menos uno es para que se no este ligeramente hacia un lado
 
     }
 
-    // Metodos que s'executa a cada tic del temporizador per moure el cerce
+    // Metodos que s'executa a cada tic del temporizador para mover el circulo
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Comprueba si el circulo toca los bordes horizontales
-        if (x + 2 * RADI >= getWidth() || x <= 0) {
-            dx = -dx;// Invierte la dirección vertical
-        }
         if (y + 2 * RADI >= getHeight() || y <= 0) {
             dy = -dy;// Invierte la dirección vertical
         }
@@ -77,16 +90,20 @@ public class POONG extends JPanel implements ActionListener {
         // Si la pelota toca un lado de el rectangulo 1
         if (x <= x1 + rec1w && x + DIA >= x1 && y + DIA >= y1 && y <= y1 + rec1y) {
             dx = -dx; // Se inviere la direccion horizontal
+            x = x1 + rec1w + 1;// Cuando la pelota rebote, inmediatamente la emuje fuera del borde de la pala
+                               // para que no se quede pillada dentro
         }
 
         // Si la pelota toca un lado de el rectangulo 2
         if (x <= x2 + rec2w && x + DIA >= x2 && y + DIA >= y2 && y <= y2 + rec2y) {
             dx = -dx; // Se inviere la direccion horizontal
+            x = x2 - DIA - 1;// Cuando la pelota rebote, inmediatamente la emuje fuera del borde de la pala
+                               // para que no se quede pillada dentro
         }
 
         // Hago que se reinicie la pelota y que sume al contador si llegan al borde sin
         // tocar la pala
-        if (x == getWidth() - 80) {
+        if (x >= getWidth() - RADI && getWidth() > 0) { //Tambien hago que si la pantalla no se a estirado del todo que no cuente puntos
             x = getWidth() / 2;
             y = getHeight() / 2;
             // Cambio el String del contador del dibuja para poder sumar
@@ -94,7 +111,7 @@ public class POONG extends JPanel implements ActionListener {
             contador1i++;
             contador1 = String.valueOf(contador1i);
         }
-        if (x == 0) {
+        if (x <= 0) {
             x = getWidth() / 2;
             y = getHeight() / 2;
             // Cambio el String del contador del dibuja para poder sumar
@@ -150,7 +167,7 @@ public class POONG extends JPanel implements ActionListener {
                         y1 = y1 + 30;
                     }
                     if (e.getKeyCode() == KeyEvent.VK_UP) {// Si le das a la flecha de arriba
-                        y2 = y2 - 30;
+                        y2 = y2 - 30;// QUe la altura del rec2 bbaje...
                     }
                     if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                         y2 = y2 + 30;

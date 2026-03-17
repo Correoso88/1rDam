@@ -12,12 +12,14 @@ public class Main {
         try {
             System.out.println("Pon el nombre de la carpeta");
             String nombre = sc.next();
+            System.out.println("Pon la ruta de la carpeta");
+            String ruta = sc.next();
 
-            File carpeta = new File(nombre);
+            File carpeta = new File(ruta, nombre);
             carpeta.mkdir();
 
             File guardar = new File(carpeta, "hola.txt");
-            FileOutputStream fichero = new FileOutputStream(guardar);//Meter en una carpeta contendio
+            FileOutputStream fichero = new FileOutputStream(guardar);//Meter en una contendio
             fichero.close();
 
         } catch (Exception e) {

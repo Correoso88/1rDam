@@ -19,7 +19,7 @@ public class Main {
             carpeta.mkdir();
 
             File guardar = new File(carpeta, "hola.txt");
-            FileOutputStream fichero = new FileOutputStream(guardar);//Meter en una contendio
+            FileOutputStream fichero = new FileOutputStream(guardar);
             fichero.close();
 
         } catch (Exception e) {

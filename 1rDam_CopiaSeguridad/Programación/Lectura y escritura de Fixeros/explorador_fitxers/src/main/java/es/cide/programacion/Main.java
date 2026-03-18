@@ -1,4 +1,5 @@
 package es.cide.programacion;
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,19 +10,19 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Pon una ruta absoluta que exista");
         String ruta = sc.nextLine();
-        try{
+        try {
             File directori = new File(ruta);
-            if(!directori.exists()){ //Si no existe el directorio
+            if (!directori.exists()) { // Si no existe el directorio
                 System.out.println("El directorio no existe");
-            }else{
+            } else {
                 String[] archivos = directori.list();
-                if(archivos != null){//Si la lista no esta vacia
-                    for(String archivo : archivos){
+                if (archivos != null) {// Si la lista no esta vacia
+                    for (String archivo : archivos) {
                         System.out.println(archivo);
                     }
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

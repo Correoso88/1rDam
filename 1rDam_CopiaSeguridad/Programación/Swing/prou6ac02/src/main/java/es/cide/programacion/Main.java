@@ -22,6 +22,7 @@ public class Main {
         NordOest.add(new JLabel("CPU: 15% Ús", JLabel.CENTER),BorderLayout.AFTER_LAST_LINE);//Creo un textfield 
         JPanel panelram = new JPanel( new BorderLayout());//Creo el panel de la ram
         NordOest.add(new JLabel("RAM: 4GB / 16GB",JLabel.CENTER), BorderLayout.BEFORE_FIRST_LINE);//Creo un textfield
+        
         //Panel 2
         JPanel NordEst = new JPanel();//Creo el panel de arriba a la derecha
         NordEst.setBorder(new CompoundBorder(BorderFactory.createTitledBorder("Accións Rapides"),new EmptyBorder(70,80,70,80)));//Le pongo titulo a el panel
@@ -29,6 +30,7 @@ public class Main {
         NordEst.add(new JButton("▶Iniciar Servei"));//Añado un boton
         NordEst.add(new JButton("↻Reiniciar"));//Añado un boton
         NordEst.add(new JButton("■Aturar Servei"));//Añado un boton
+
         //Panel 3
         JPanel SudOest = new JPanel();//Creo el panel de abajo a la izquierda
         SudOest.setBorder(BorderFactory.createTitledBorder("Parametres de Carrega"));
@@ -43,6 +45,7 @@ public class Main {
         SudOest.add(slider);//Meto el slider al panel
         SudOest.add(new JLabel("Timeout (segons):"));//Creo un label
         SudOest.add(new TextField("60"));//Creo un textField
+
         //Panel 4
         JPanel SudEst = new JPanel();//Creo el panel de abajo a la derecho
         SudEst.setLayout(new BorderLayout());

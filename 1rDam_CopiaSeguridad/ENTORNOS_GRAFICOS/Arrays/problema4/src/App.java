@@ -7,14 +7,14 @@ public class App {
         int v[] = new int[n];
         int cont = 0;
         for(int i = 0; i<n;i++){
-            v[i]=sc.nextLine();
+            v[i]=sc.nextInt();
         }
         Arrays.sort(v);
 
         int buscado = v[0];
         int count = 0;
         for(int j=0; j<n;j++){
-            if(v[i] == comp){
+            if(v[j] == cont){
                 count++;
             }
         }

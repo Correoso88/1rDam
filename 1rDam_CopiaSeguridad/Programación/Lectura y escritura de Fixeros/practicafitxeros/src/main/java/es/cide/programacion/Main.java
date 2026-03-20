@@ -3,8 +3,45 @@ package es.cide.programacion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
+    public static String rutaFile = null;
+
+    public static String leerArchivo(String ruta) {
+        Scanner sc = new Scanner(System.in);
+        FileInputStream file = null;
+        String TextoLeido = "";
+        char v;
+        try {
+
+            File archivo = new File(ruta);
+            file = new FileInputStream(archivo);
+            int size = file.available();// Mide el tamaño del texto dentro de una variable
+            for (int i = 0; i < size; i++) {
+                v = (char) file.read();
+                TextoLeido = TextoLeido + v;// Sumas a la variable vacia el texto que a la vez lee del archivo que le
+                                            // indicas
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (file != null) {
+                try {
+                    file.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+        return TextoLeido;
+    }
+
     public static void main(String[] args) {
         JFrame ventana = new JFrame();
         ventana.setSize(500, 500);
@@ -37,10 +74,30 @@ public class Main {
         ventana.add(barraBotones, BorderLayout.NORTH);
 
         JPanel areaescritura = new JPanel();
+        JTextArea escribir = new JTextArea("hola que hace");
+        areaescritura.add(escribir);
         JScrollPane barraScroll = new JScrollPane(areaescritura);
         barraScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
         ventana.add(barraScroll, BorderLayout.CENTER);
+
+        // Action listeners
+
+        bnou.addActionListener(e -> {
+            escribir.setText("");
+        });
+
+        bobrir.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.showOpenDialog(ventana);
+            //int respuesta = fileChooser.showOpenDialog(null);
+
+            //if (respuesta == JFileChooser.APPROVE_OPTION) {
+             //   File fichero = fileChooser.getSelectedFile();
+            //}
+            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
+            String leerContenido = leerArchivo(ruta);
+            escribir.setText(leerContenido);
+        });
 
         ventana.setVisible(true);
     }

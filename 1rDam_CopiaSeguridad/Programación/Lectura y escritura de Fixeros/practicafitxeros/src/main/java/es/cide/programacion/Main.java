@@ -5,24 +5,22 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main {
-    public static String rutaFile = null;
+    public static File file = null;
+    public static JFileChooser fileChooser = new JFileChooser();
 
-    public static String leerArchivo(String ruta) {
-        Scanner sc = new Scanner(System.in);
-        FileInputStream file = null;
+    public static String leerArchivo(File file) {
+        FileInputStream fileI = null;
         String TextoLeido = "";
         char v;
         try {
-
-            File archivo = new File(ruta);
-            file = new FileInputStream(archivo);
-            int size = file.available();// Mide el tamaño del texto dentro de una variable
+            fileI = new FileInputStream(file);
+            int size = fileI.available();// Mide el tamaño del texto dentro de una variable
             for (int i = 0; i < size; i++) {
-                v = (char) file.read();
+                v = (char) fileI.read();
                 TextoLeido = TextoLeido + v;// Sumas a la variable vacia el texto que a la vez lee del archivo que le
                                             // indicas
             }
@@ -30,73 +28,129 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (file != null) {
+            if (fileI != null) {
                 try {
-                    file.close();
+                    fileI.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-
         }
         return TextoLeido;
     }
 
+    public static void escribirArchivo(File file, String textoEscrito) {
+        FileOutputStream fileO = null;
+        char v;
+        try {
+            fileO = new FileOutputStream(file);
+            for (int i = 0; i < textoEscrito.length(); i++) { // Bucle para que recorra todo el texto de char a char
+                v = textoEscrito.charAt(i); // Separa las palabras en char
+                fileO.write((byte) v); // Imprime cada char del texto
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileO != null) {
+                try {
+                    fileO.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
+
+        // LOOK & FEEL Nimbus
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         JFrame ventana = new JFrame();
         ventana.setSize(500, 500);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel barraBotones = new JPanel();
-        barraBotones.setLayout(new GridBagLayout());// Añado el grid bag
+
+        ventana.setLayout(new GridBagLayout());// Añado el grid bag
         GridBagConstraints gbc = new GridBagConstraints(); // Creo el grid bag
-        gbc.insets = new Insets(8, 10, 8, 10);// Margen entre los componentes
+        gbc.insets = new Insets(5, 5, 5, 5);// Margen entre los componentes
+
 
         // Creamos la barra de botones uno al lado del otro
         // Boton nou
         gbc.gridx = 0;
         JButton bnou = new JButton("Nou");
-        barraBotones.add(bnou, gbc);
+        ventana.add(bnou, gbc);
 
         // Boton Obrir
         gbc.gridx = 1;
         JButton bobrir = new JButton("Obrir");
-        barraBotones.add(bobrir, gbc);
+        ventana.add(bobrir, gbc);
 
         // Boton Desear
         gbc.gridx = 2;
         JButton bdesear = new JButton("Desear");
-        barraBotones.add(bdesear, gbc);
+        ventana.add(bdesear, gbc);
 
         // Boton Desear Com
         gbc.gridx = 3;
         JButton bdesearCom = new JButton("Desear Com..");
-        barraBotones.add(bdesearCom, gbc);
-        ventana.add(barraBotones, BorderLayout.NORTH);
+        ventana.add(bdesearCom, gbc);
 
-        JPanel areaescritura = new JPanel();
-        JTextArea escribir = new JTextArea("hola que hace");
-        areaescritura.add(escribir);
-        JScrollPane barraScroll = new JScrollPane(areaescritura);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 4; //Que ocupe las cuatro columnas
+        gbc.fill = GridBagConstraints.BOTH; //Esto es para que se pueda expndir a cualquier lado
+        gbc.weightx = 1.0; //Que se peuda expandir en horizontal
+        gbc.weighty = 1.0;// QUe se pueda expandir en vertical
+
+        JTextArea escribir = new JTextArea();
+        JScrollPane barraScroll = new JScrollPane(escribir);
         barraScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        ventana.add(barraScroll, BorderLayout.CENTER);
+        ventana.add(barraScroll, gbc); // solo añadimos el JScrollPane
 
         // Action listeners
-
+        // Action listener de nou
         bnou.addActionListener(e -> {
-            escribir.setText("");
+            escribir.setText(""); // Borra todo el texto
+            file = null;
+
         });
 
+        // Action listener de obrir
         bobrir.addActionListener(e -> {
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.showOpenDialog(ventana);
-            //int respuesta = fileChooser.showOpenDialog(null);
+            fileChooser.showOpenDialog(ventana); // abro el fileChhooser
+            file = fileChooser.getSelectedFile(); // Guardo en la variable global el file que he elegido
+            escribir.setText(leerArchivo(file)); // Escribimos en el text area lo que nos de el metodo de leerArchivo
+        });
 
-            //if (respuesta == JFileChooser.APPROVE_OPTION) {
-             //   File fichero = fileChooser.getSelectedFile();
-            //}
-            String ruta = fileChooser.getSelectedFile().getAbsolutePath();
-            String leerContenido = leerArchivo(ruta);
-            escribir.setText(leerContenido);
+        bdesear.addActionListener(e -> {
+            if (file != null) { // Primero comrpuebo si el file es nullo
+                escribirArchivo(file, escribir.getText()); // Uso el metodo con el archivo que he guardado en el de leer
+            } else {// Si es nullo hago exactamente lo mismo que el desar Com
+                int resultado = fileChooser.showSaveDialog(ventana);
+                if (resultado == fileChooser.APPROVE_OPTION) {
+                    file = fileChooser.getSelectedFile();
+                    escribirArchivo(file, escribir.getText());
+                }
+            }
+        });
+
+        bdesearCom.addActionListener(e -> {
+            int resultado = fileChooser.showSaveDialog(ventana); // Guardo en un int un valor, 0 o 1 0 o 2
+            if (resultado == fileChooser.APPROVE_OPTION) {// si es el 0 es el boton de aceptar
+                file = fileChooser.getSelectedFile(); // Guardo el fichero en la variable local
+                escribirArchivo(file, escribir.getText()); // Usamos el metodo para escribir el archivo
+            }
+
         });
 
         ventana.setVisible(true);

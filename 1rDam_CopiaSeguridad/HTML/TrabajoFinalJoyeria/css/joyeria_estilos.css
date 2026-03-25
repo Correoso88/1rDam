@@ -1,0 +1,21 @@
+html{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#logo{
+    width: 40px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#imgdetalles{
+    width: 150px;
+    height: 150px;
+}
+#Detalles{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items:center;
+    
+}

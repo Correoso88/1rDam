@@ -1,5 +1,6 @@
 html{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
 #logo{
     width: 40px;
@@ -18,4 +19,22 @@ a{
     gap: 10px;
     align-items:center;
     
+}
+nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color:sandybrown;
+    padding: 15px;
+    margin: 15px;
+    
+}
+#Enlaces{
+    color: ;
+    
+    
+}
+button{
+    background-color:sandybrown ;
+    border-radius: 8px;
+    border-color: sandybrown;
 }

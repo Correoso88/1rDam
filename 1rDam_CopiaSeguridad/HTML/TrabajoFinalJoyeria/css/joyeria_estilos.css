@@ -4,7 +4,7 @@ html {
 
 
 header {
-    padding: 15px 5%;
+    padding: 15px;
 }
 
 .logos {
@@ -14,8 +14,9 @@ header {
 }
 
 #logo-principal { 
-    width: 120px;
+    width: 200px;
 }
+
 .icono { 
     width: 30px;
     margin-left: 15px;
@@ -37,6 +38,9 @@ nav a {
     font-weight: bold;
 }
 
+.introduccion{
+    text-align: center;
+}
 
 .vista-productos {
     display: grid;
@@ -45,6 +49,11 @@ nav a {
     padding: 20px;
     justify-items: center;
     
+}
+
+.tarjeta-producto a{
+    text-decoration: none;
+    color: black;
 }
 
 .tarjeta-producto {
@@ -68,7 +77,7 @@ nav a {
 .ficha-producto {
     display: flex;
     gap: 50px;
-    flex-wrap: wrap;
+    
 }
 
 .imagen-detalle img {

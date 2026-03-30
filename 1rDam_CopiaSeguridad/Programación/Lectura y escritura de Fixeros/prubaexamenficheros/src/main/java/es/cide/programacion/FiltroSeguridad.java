@@ -1,4 +1,4 @@
-package es.cide;
+package es.cide.programacion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

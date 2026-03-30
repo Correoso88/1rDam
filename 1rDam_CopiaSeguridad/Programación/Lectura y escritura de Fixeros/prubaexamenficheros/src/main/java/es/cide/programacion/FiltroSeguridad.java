@@ -2,7 +2,7 @@ package es.cide.programacion;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*; // Importante: paquete fundamental según tus apuntes
+import java.io.*;
 
 public class FiltroSeguridad extends JFrame {
     private JTextField txtOrigen, txtDesti;

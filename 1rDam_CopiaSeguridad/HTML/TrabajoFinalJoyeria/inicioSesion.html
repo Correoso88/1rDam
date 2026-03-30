@@ -8,16 +8,19 @@
 
   <body>
     <header>
-        <a href="index.html"><img id="logoJoyeria" src="img/Logojoyeria.png" alt="Logo Joyería"></a>
-        <a href="inicioSesion.html"><img id="logo" src="img/InicioDeSesion.png" alt="Logo Joyería"></a>
-        <a href="index.html"><img id="logo" src="img//IconoCesta.png" alt="Logo Joyería"></a>
-      <div id="">
-      <nav>
-        <a id="Enlaces" href="Productos.html">Lista de productos</a>
-        <a id="Enlaces" href="Conocenos.html">Conocenos</a>
-        <a id="Enlaces" href="index.html">Inicio</a>
-      </nav>
-      </div>
+        <div class="logos">
+            <a href="index.html"><img id="logo-principal" src="img/Logojoyeria.png"></a>
+            <div>
+                <a href="inicioSesion.html"><img src="img/InicioDeSesion.png" alt="Login" class="icono"></a>
+                <a href="carrito.html"><img src="img/IconoCesta.png" alt="Cesta" class="icono"></a>
+            </div>
+        </div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Listado de Productos</a>
+            <a href="Contactos.html">Conócenos</a>
+        </nav>
     </header>
     <main>
         <form action="inicioSesion.html">
@@ -25,13 +28,13 @@
                 <input type="email" id="correu" name="correu" required placeholder="Correu">
             </label>
             <label>Contrasenya:
-                <input type="password" id="contrasenya" required name="contrasenya" placeholder="Contrasenya" min="6" max="12">
+                <input type="password" id="contrasenya" required name="contrasenya" placeholder="Contrasenya" min="6">
             </label>
             <button name="IniciarSesion">Inicia Sesion</button>
         </form>
     </main>
     <footer>
-
+      <p>&copy; 2024 CMJoyeros - Taller de Joyería en Baleares</p>
     </footer>
   </body>
 </html>

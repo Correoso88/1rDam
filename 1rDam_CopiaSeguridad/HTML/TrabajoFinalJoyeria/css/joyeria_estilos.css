@@ -97,6 +97,13 @@ button {
     font-weight: bold;
 }
 
+button:hover {
+    transition-property: all;
+    transition-timing-function: linear;
+    transition-duration: 0.5s;
+    transform: scale(1.2);
+}
+
 
 footer {
     color:white;
@@ -104,4 +111,27 @@ footer {
     text-align: center;
     padding: 30px;
     margin-top: 50px;
+}
+
+form {
+    margin-top: 30px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr; 
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+label {
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    height: 40px;
+    border: 1px solid #d3d3d3;
+}
+#CerrarSesion {
+    display: flex;
+    justify-content: center;
 }

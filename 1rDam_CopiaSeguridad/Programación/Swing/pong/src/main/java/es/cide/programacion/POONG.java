@@ -183,7 +183,6 @@ public class POONG extends JPanel implements ActionListener {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-
         });
     }
 }

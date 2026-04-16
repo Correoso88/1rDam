@@ -22,19 +22,25 @@
             <a href="Contactos.html">Conócenos</a>
         </nav>
     </header>
-    <main>
-        <form action="inicioSesion.html">
-            <label>Correu electronic:
-                <input type="email" id="correu" name="correu" required placeholder="Correu">
+    <main class = "inicioSesion">
+        <form action="inicioSesion.html" method="post" id="login">
+            <h1>Cuenta de CMJOYEROS</h1>
+            <label>Usuario:
+                <input type="text" id="Usuario" name="Usuario" required placeholder="Nombre de usuario">
             </label>
-            <label>Contrasenya:
-                <input type="password" id="contrasenya" required name="contrasenya" placeholder="Contrasenya" min="6">
+            
+            <label>Contraseña:
+                <input type="password" id="contrasenya" required name="contrasenya" placeholder=" Pon tu contraseña" minlength="6" maxlength="12">
             </label>
-            <button name="IniciarSesion">Inicia Sesion</button>
+            <button name="IniciarSesion" id="IniciarSesion">Inicia Sesion</button>
+            
         </form>
+    <button id="CerrarSesion" onclick="CerrarSesion()">CerrarSesion</button>
+        
     </main>
     <footer>
       <p>&copy; 2024 CMJoyeros - Taller de Joyería en Baleares</p>
     </footer>
+    <script src="/js/script.js"></script>
   </body>
 </html>

@@ -14,7 +14,6 @@ public class FiltroSeguridad {
      * - Al menos una mayúscula
      */
     public static boolean esSegura(String password) {
-
         if (password.length() < 8) {
             return false;
         }
@@ -30,6 +29,31 @@ public class FiltroSeguridad {
         return tieneNumero && tieneMayuscula;
     }
 
+    /**
+     * Método que escribe un texto en un archivo usando FileOutputStream.
+     */
+    public static void escribirArchivo(File file, String textoEscrito) {
+        FileOutputStream fileO = null;
+        char v;
+        try {
+            fileO = new FileOutputStream(file);
+            for (int i = 0; i < textoEscrito.length(); i++) { // Recorre cada carácter
+                v = textoEscrito.charAt(i);
+                fileO.write((byte) v); // Escribe el carácter
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileO != null) {
+                try {
+                    fileO.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
@@ -40,7 +64,6 @@ public class FiltroSeguridad {
             ventana.setResizable(true);
             ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
             // COMPONENTES
             JTextField txtOrigen = new JTextField(20);
             JTextField txtDesti = new JTextField(20);
@@ -50,7 +73,8 @@ public class FiltroSeguridad {
 
             JButton btnAnalitzar = new JButton("Analizar");
             JButton btnDesar = new JButton("Guardar");
-            btnDesar.setEnabled(false);
+            btnDesar.setEnabled(false); // Inicialmente desactivado
+
 
             // LAYOUT: GRIDBAGLAYOUT
             ventana.setLayout(new GridBagLayout());
@@ -78,7 +102,7 @@ public class FiltroSeguridad {
             // FILA 2 → BOTÓN ANALIZAR
             gbc.gridx = 0;
             gbc.gridy = 2;
-            gbc.gridwidth = 2; // ocupa las dos columnas
+            gbc.gridwidth = 2;
             ventana.add(btnAnalitzar, gbc);
 
             // FILA 3 → ÁREA SEGURAS
@@ -110,9 +134,9 @@ public class FiltroSeguridad {
             gbc.weighty = 0;
             ventana.add(btnDesar, gbc);
 
+
             // BOTÓN ANALIZAR
             btnAnalitzar.addActionListener(e -> {
-
                 String ruta = txtOrigen.getText();
                 File fichero = new File(ruta);
 
@@ -128,7 +152,6 @@ public class FiltroSeguridad {
 
                     String linea;
                     while ((linea = br.readLine()) != null) {
-
                         boolean segura = esSegura(linea);
 
                         if (segura) {
@@ -146,18 +169,15 @@ public class FiltroSeguridad {
                 }
             });
 
+
             // BOTÓN GUARDAR
             btnDesar.addActionListener(e -> {
-
                 String rutaDestino = txtDesti.getText();
+                File fileDestino = new File(rutaDestino);
 
-                try (PrintWriter pw = new PrintWriter(new FileWriter(rutaDestino))) {
-                    // Guardamos solo las contraseñas seguras
-                    pw.print(areaSegures.getText());
-                    JOptionPane.showMessageDialog(null, "Fichero guardado correctamente");
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Error al guardar");
-                }
+                // Usamos el método escribirArchivo
+                escribirArchivo(fileDestino, areaSegures.getText());
+                JOptionPane.showMessageDialog(null, "Fichero guardado correctamente");
             });
 
             ventana.setVisible(true);

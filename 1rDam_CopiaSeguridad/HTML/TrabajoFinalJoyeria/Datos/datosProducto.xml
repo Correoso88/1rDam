@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<producto>
+    <foto>anillocompromiso.png</foto>
+    <nombre>Anillo Compromiso Oro Blanco</nombre>
+    <descripcion>Pieza exclusiva fabricada en oro blanco de 18 quilates con un acabado pulido espejo. 
+                    Incluye estuche de lujo y certificado de autenticidad.</descripcion>
+    <categoria>Anillo</categoria>
+    <precio>1200</precio>
+</producto>

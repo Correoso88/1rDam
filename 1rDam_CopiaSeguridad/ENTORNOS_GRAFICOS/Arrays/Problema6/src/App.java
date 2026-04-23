@@ -8,19 +8,21 @@ public class App {
         int v[] = new int[sc.nextInt()];
         int sum = 0 ;
         boolean buscar = true;
-        for(int j = 0;j < v.length;j++){
-            v[j] = sc.nextInt();
-        }
+        int J=0;
         for(int i = 0;i < v.length;i++){
+            v[i] = sc.nextInt();
             sum = sum + v[i];
         }
-        for(int k = 0;k < v.length;k++){
-            if(sum - v[k] == v[k]){
+
+        while(buscar==false && J<v.length){
+            if(sum - v[J] == v[J]){
                 buscar=true;
             }else{
                 buscar=false;
             }
+            J++;
         }
+
         if(buscar){
             System.out.println("YES");
         }else{

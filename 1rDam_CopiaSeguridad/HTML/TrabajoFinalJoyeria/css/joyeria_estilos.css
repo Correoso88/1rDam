@@ -135,3 +135,13 @@ input {
     display: flex;
     justify-content: center;
 }
+.Conocenos {
+    text-align: center;
+}
+h3 {
+    text-decoration: underline;
+}
+#Correo {
+    display: flex;
+    justify-content: center;
+}

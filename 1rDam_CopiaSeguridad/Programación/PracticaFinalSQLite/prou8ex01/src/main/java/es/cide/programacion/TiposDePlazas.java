@@ -14,7 +14,7 @@ import java.awt.*;
 public class TiposDePlazas extends JFrame {
     
     public TiposDePlazas() {
-        setSize(750, 500);
+        setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -87,18 +87,13 @@ public class TiposDePlazas extends JFrame {
         gbcP.gridx = 0;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.CENTER;
         panelMain.add(new JLabel("Nombre"),gbcP);
 
         gbcP.gridx = 1;
-        gbcP.gridy = 1;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.CENTER;
         panelMain.add(new JLabel("Funcion"),gbcP);
 
         //Boton añadir
         gbcP.gridx = 2;
-        gbcP.gridy = 1;
         gbcP.gridwidth = 2;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnAñadir = new JButton("Añadir");
@@ -108,135 +103,94 @@ public class TiposDePlazas extends JFrame {
         gbcP.gridx = 0;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPnom1 = new JTextField();
         panelMain.add(TPnom1, gbcP);
 
         // Textfield Funcio 1
         gbcP.gridx = 1;
-        gbcP.gridy = 2;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPfuncio1 = new JTextField();
         panelMain.add(TPfuncio1, gbcP);
 
         // Boton Guardar 1
         gbcP.gridx = 2;
-        gbcP.gridy = 2;
-        gbcP.gridwidth = 1;
         gbcP.weightx = 0;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnGuardar1 = new JButton("Guardar");
         panelMain.add(bnGuardar1, gbcP);
 
         // Boton Borrar 1
         gbcP.gridx = 3;
-        gbcP.gridy = 2;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar1 = new JButton("Borrar");
         panelMain.add(bnBorrar1, gbcP);
 
         // Textfield nom 2
         gbcP.gridx = 0;
         gbcP.gridy = 3;
-        gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPnom2 = new JTextField();
         panelMain.add(TPnom2, gbcP);
 
         // Textfield Funcio 2
         gbcP.gridx = 1;
-        gbcP.gridy = 3;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPfuncio2 = new JTextField();
         panelMain.add(TPfuncio2, gbcP);
 
         // Boton Guardar 2
         gbcP.gridx = 2;
-        gbcP.gridy = 3;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnGuardar2 = new JButton("Guardar");
         panelMain.add(bnGuardar2, gbcP);
 
         // Boton Borrar 2
         gbcP.gridx = 3;
-        gbcP.gridy = 3;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar2 = new JButton("Borrar");
         panelMain.add(bnBorrar2, gbcP);
 
         // Textfield nom 3
         gbcP.gridx = 0;
         gbcP.gridy = 4;
-        gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPnom3 = new JTextField();
         panelMain.add(TPnom3, gbcP);
 
         // Textfield Funcio 3
         gbcP.gridx = 1;
-        gbcP.gridy = 4;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPfuncio3 = new JTextField();
         panelMain.add(TPfuncio3, gbcP);
 
         // Boton Guardar 3
         gbcP.gridx = 2;
-        gbcP.gridy = 4;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnGuardar3 = new JButton("Guardar");
         panelMain.add(bnGuardar3, gbcP);
 
         // Boton Borrar 3
         gbcP.gridx = 3;
-        gbcP.gridy = 4;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar3 = new JButton("Borrar");
         panelMain.add(bnBorrar3, gbcP);
 
         // Textfield nom 4
         gbcP.gridx = 0;
         gbcP.gridy = 5;
-        gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPnom4 = new JTextField();
         panelMain.add(TPnom4, gbcP);
 
         // Textfield Funcio 4
         gbcP.gridx = 1;
-        gbcP.gridy = 5;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPfuncio4 = new JTextField();
         panelMain.add(TPfuncio4, gbcP);
 
         // Boton Guardar 4
         gbcP.gridx = 2;
-        gbcP.gridy = 5;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnGuardar4 = new JButton("Guardar");
         panelMain.add(bnGuardar4, gbcP);
 
         // Boton Borrar 4
         gbcP.gridx = 3;
-        gbcP.gridy = 5;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar4 = new JButton("Borrar");
         panelMain.add(bnBorrar4, gbcP);
 
         // Textfield nom 5
         gbcP.gridx = 0;
         gbcP.gridy = 6;
-        gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPnom5 = new JTextField();
         panelMain.add(TPnom5, gbcP);
@@ -244,24 +198,18 @@ public class TiposDePlazas extends JFrame {
         // Textfield Funcio 5
         gbcP.gridx = 1;
         gbcP.gridy = 6;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JTextField TPfuncio5 = new JTextField();
         panelMain.add(TPfuncio5, gbcP);
 
         // Boton Guardar 5
         gbcP.gridx = 2;
         gbcP.gridy = 6;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnGuardar5 = new JButton("Guardar");
         panelMain.add(bnGuardar5, gbcP);
 
         // Boton Borrar 5
         gbcP.gridx = 3;
         gbcP.gridy = 6;
-        gbcP.gridwidth = 1;
-        gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar5 = new JButton("Borrar");
         panelMain.add(bnBorrar5, gbcP);
         

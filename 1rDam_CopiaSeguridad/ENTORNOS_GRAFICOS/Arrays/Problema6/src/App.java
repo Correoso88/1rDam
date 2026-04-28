@@ -14,7 +14,7 @@ public class App {
             sum = sum + v[i];
         }
 
-        while(buscar==false && J<v.length){
+        while(buscar==false && J <v.length){
             if(sum - v[J] == v[J]){
                 buscar=true;
             }else{

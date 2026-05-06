@@ -123,8 +123,8 @@ public Nominas() {
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField ENSS1 = new JTextField();
-        panelMain.add(ENSS1, gbcP);
+        JTextField NID1 = new JTextField();
+        panelMain.add(NID1, gbcP);
 
         // Textfield IBAN_Pago 1
         gbcP.gridx = 1;
@@ -176,13 +176,13 @@ public Nominas() {
         panelMain.add(bnBorrar1, gbcP);
 
         //SEGUNDA FILA
-        // Textfield ID Empleado 2
+        // Textfield ID Nomina 2
         gbcP.gridx = 0;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField EID2 = new JTextField();
-        panelMain.add(EID2, gbcP);
+        JTextField NID2 = new JTextField();
+        panelMain.add(NID2, gbcP);
 
         // Textfield nom 2
         gbcP.gridx = 1;
@@ -238,8 +238,8 @@ public Nominas() {
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField EID3 = new JTextField();
-        panelMain.add(EID3, gbcP);
+        JTextField NID3 = new JTextField();
+        panelMain.add(NID3, gbcP);
 
         // Textfield ID Plaza 3
         gbcP.gridx = 1;
@@ -295,8 +295,8 @@ public Nominas() {
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField EID4 = new JTextField();
-        panelMain.add(EID4, gbcP);
+        JTextField NID4 = new JTextField();
+        panelMain.add(NID4, gbcP);
 
         // Textfield ID Plaza 4
         gbcP.gridx = 1;
@@ -352,8 +352,8 @@ public Nominas() {
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField EID1 = new JTextField();
-        panelMain.add(EID1, gbcP);
+        JTextField NID5 = new JTextField();
+        panelMain.add(NID5, gbcP);
 
         // Textfield ID Plaza 5
         gbcP.gridx = 1;
@@ -427,7 +427,65 @@ public Nominas() {
         panelFlechas.add(bnder, gbc2);       
         
         //Action Listeners
-        //Boton 
+        //Boton Guardar
+        bnGuardar1.addActionListener(e -> {
+
+        });
+        bnGuardar2.addActionListener(e -> {
+
+        });
+        bnGuardar3.addActionListener(e -> {
+
+        });
+        bnGuardar4.addActionListener(e -> {
+
+        });
+        bnGuardar5.addActionListener(e -> {
+
+        });
+        //Boton Borrar
+        bnBorrar1.addActionListener(e -> {
+            NID1.setText("");
+            NIBAN_Pago1.setText("");
+            NImport1.setText("");
+            NNSS1.setText("");
+            NIDPla1.setText("");
+        });
+        bnBorrar2.addActionListener(e -> {
+            NID2.setText("");
+            NIBAN_Pago2.setText("");
+            NImport2.setText("");
+            NNSS2.setText("");
+            NIDPla2.setText("");
+        });
+        bnBorrar3.addActionListener(e -> {
+            NID3.setText("");
+            NIBAN_Pago3.setText("");
+            NImport3.setText("");
+            NNSS3.setText("");
+            NIDPla3.setText("");
+        });
+        bnBorrar3.addActionListener(e -> {
+            NID3.setText("");
+            NIBAN_Pago3.setText("");
+            NImport3.setText("");
+            NNSS3.setText("");
+            NIDPla3.setText("");
+        });
+        bnBorrar4.addActionListener(e -> {
+            NID4.setText("");
+            NIBAN_Pago4.setText("");
+            NImport4.setText("");
+            NNSS4.setText("");
+            NIDPla4.setText("");
+        });
+        bnBorrar5.addActionListener(e -> {
+            NID5.setText("");
+            NIBAN_Pago5.setText("");
+            NImport5.setText("");
+            NNSS5.setText("");
+            NIDPla5.setText("");
+        });
 
 
         add(panelFlechas, BorderLayout.SOUTH);

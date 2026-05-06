@@ -1,7 +1,83 @@
 {
-  "foto": "anillocompromiso.png",
-  "nombre": "Anillo Compromiso Oro Blanco",
-  "descripcion": "Pieza exclusiva fabricada en oro blanco de 18 quilates con un acabado pulido espejo. Incluye estuche de lujo y certificado de autenticidad.",
-  "categoria": "Anillo",
-  "precio": 1200.00
+  "productos": [
+    {
+      "foto": "Anillo gallonado de oro amarillo de 18k.png",
+      "nombre": "Anillo Compromiso Oro Blanco",
+      "descripcion": "Pieza exclusiva fabricada en oro blanco de 18 quilates con un acabado pulido espejo. Incluye estuche de lujo y certificado de autenticidad.",
+      "categoria": "Anillo",
+      "precio": 1200.00
+    },
+
+    {
+      "foto": "Anillo gallonado de oro amarillo de 18k.png",
+      "nombre": "Anillo gallonado de oro amarillo de 18k",
+      "descripcion": "Volumen y diseño en este anillo de oro amarillo de la colección Gallón, una joya con carácter que destaca por su sofisticación y que explora nuevas siluetas llenas de movimiento. Esta joya ha sido elaborada",
+      "categoria": "Anillo",
+      "precio": 2520
+    },
+
+    {
+      "foto": "Colgante de oro amarillo de 18K con diamante en talla brillante.png",
+      "nombre": "Colgante de oro amarillo de 18K con diamante en talla brillante",
+      "descripcion": "Este colgante de la colección Idalia combina el oro amarillo de 18K con un diamante central en talla brillante que actúa como verdadero protagonista.",
+      "categoria": "Collar",
+      "precio": 1600
+    },
+
+    {
+      "foto": "Colgante de oro amarillo de 18K con diamante en talla brillante.png",
+      "nombre": "Colgante de oro amarillo de 18K con esmeralda en talla brillante",
+      "descripcion": "Una esmeralda en talla brillante actúa como verdadera protagonista en este colgante de la colección Talismán.",
+      "categoria": "Collar",
+      "precio": 1100
+    },
+
+    {
+      "foto": "Pendientes aro pequeño fino de plata 925 con gemas multicolor.png",
+      "nombre": "Pendientes aro pequeño fino de plata 925 con gemas multicolor",
+      "descripcion": "Los colores en toda su intensidad son el punto de partida de estos pendientes de la colección Pop Art.",
+      "categoria": "Pendiente",
+      "precio": 350
+    },
+
+    {
+      "foto": "2",
+      "nombre": "2",
+      "descripcion": "2",
+      "categoria": "2",
+      "precio": 2
+    },
+
+    {
+      "foto": "3",
+      "nombre": "3",
+      "descripcion": "3",
+      "categoria": "3",
+      "precio": 3
+    },
+
+    {
+      "foto": "4",
+      "nombre": "4",
+      "descripcion": "4",
+      "categoria": "4",
+      "precio": 4
+    },
+
+    {
+      "foto": "4",
+      "nombre": "4",
+      "descripcion": "4",
+      "categoria": "4",
+      "precio": 5
+    },
+
+    {
+      "foto": "6",
+      "nombre": "6",
+      "descripcion": "6",
+      "categoria": "6",
+      "precio": 6
+    }
+  ]
 }

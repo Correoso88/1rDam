@@ -75,7 +75,7 @@ public class Empleados extends JFrame {
         //Titulo
         gbcP.gridx = 0;
         gbcP.gridy = 0;
-        gbcP.gridwidth = 4;
+        gbcP.gridwidth = 9;
         gbcP.fill = GridBagConstraints.CENTER;
         panelMain.add(new JLabel("Empleados"),gbcP);
 
@@ -429,14 +429,104 @@ public class Empleados extends JFrame {
         panelFlechas.add(bnder, gbc2);       
         
         //Action Listeners
-        //Boton 
+        //Boton Guardar
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarEmpleados(ENSS1.getText(), Enom1.getText(), Eapellido1.getText(), Eemail1.getText(), EIBAN1.getText());
+        });
+        bnGuardar2.addActionListener(e -> {
+            Main.insertarEmpleados(ENSS2.getText(), Enom2.getText(), Eapellido2.getText(), Eemail2.getText(), EIBAN2.getText());
+        });
+        bnGuardar3.addActionListener(e -> {
+            Main.insertarEmpleados(ENSS3.getText(), Enom3.getText(), Eapellido3.getText(), Eemail3.getText(), EIBAN3.getText());
+        });
+        bnGuardar4.addActionListener(e -> {
+            Main.insertarEmpleados(ENSS4.getText(), Enom4.getText(), Eapellido4.getText(), Eemail4.getText(), EIBAN4.getText());
+        });
+        bnGuardar5.addActionListener(e -> {
+            Main.insertarEmpleados(ENSS5.getText(), Enom5.getText(), Eapellido5.getText(), Eemail5.getText(), EIBAN5.getText());
+        });
+        //Boton Borrar
+        bnBorrar1.addActionListener(e -> {
+            ENSS1.setText("");
+            Enom1.setText("");
+            Eapellido1.setText("");
+            Eemail1.setText("");
+            EIBAN1.setText("");
+        });
+        bnBorrar2.addActionListener(e -> {
+            ENSS2.setText("");
+            Enom2.setText("");
+            Eapellido2.setText("");
+            Eemail2.setText("");
+            EIBAN2.setText("");
+        });
+        bnBorrar3.addActionListener(e -> {
+            ENSS3.setText("");
+            Enom3.setText("");
+            Eapellido3.setText("");
+            Eemail3.setText("");
+            EIBAN3.setText("");
+        });
+        bnBorrar4.addActionListener(e -> {
+            ENSS4.setText("");
+            Enom4.setText("");
+            Eapellido4.setText("");
+            Eemail4.setText("");
+            EIBAN4.setText("");
+        });
+        bnBorrar5.addActionListener(e -> {
+            ENSS5.setText("");
+            Enom5.setText("");
+            Eapellido5.setText("");
+            Eemail5.setText("");
+            EIBAN5.setText("");
+        });
+
 
 
         add(panelFlechas, BorderLayout.SOUTH);
         add(panelMain);
         add(panelNavegacion, BorderLayout.NORTH);
         setVisible(true);
+
+        java.util.List<String[]> datos = Main.obtenerEmpleados();
+        if (datos.size() > 0) {
+            ENSS1.setText(datos.get(0)[0]);
+            Enom1.setText(datos.get(0)[1]);
+            Eapellido1.setText(datos.get(0)[2]);
+            Eemail1.setText(datos.get(0)[3]);
+            EIBAN1.setText(datos.get(0)[4]);
+        }
+        if (datos.size() > 1) {
+            ENSS2.setText(datos.get(0)[0]);
+            Enom2.setText(datos.get(0)[1]);
+            Eapellido2.setText(datos.get(0)[2]);
+            Eemail2.setText(datos.get(0)[3]);
+            EIBAN2.setText(datos.get(0)[4]);
+        }
+        if (datos.size() > 2) {
+            ENSS3.setText(datos.get(0)[0]);
+            Enom3.setText(datos.get(0)[1]);
+            Eapellido3.setText(datos.get(0)[2]);
+            Eemail3.setText(datos.get(0)[3]);
+            EIBAN3.setText(datos.get(0)[4]);
+        }
+        if (datos.size() > 3) {
+            ENSS4.setText(datos.get(0)[0]);
+            Enom4.setText(datos.get(0)[1]);
+            Eapellido4.setText(datos.get(0)[2]);
+            Eemail4.setText(datos.get(0)[3]);
+            EIBAN4.setText(datos.get(0)[4]);
+        }
+        if (datos.size() > 4) {
+            ENSS5.setText(datos.get(0)[0]);
+            Enom5.setText(datos.get(0)[1]);
+            Eapellido5.setText(datos.get(0)[2]);
+            Eemail5.setText(datos.get(0)[3]);
+            EIBAN5.setText(datos.get(0)[4]);
+        }
     }
 
+        
 
 }

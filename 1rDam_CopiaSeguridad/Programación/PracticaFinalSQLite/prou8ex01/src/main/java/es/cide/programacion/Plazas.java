@@ -207,8 +207,8 @@ public class Plazas extends JFrame {
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField nom2 = new JTextField();
-        panelMain.add(nom2, gbcP);
+        JTextField Pnom2 = new JTextField();
+        panelMain.add(Pnom2, gbcP);
 
         // Textfield Salario 2
         gbcP.gridx = 2;
@@ -478,13 +478,114 @@ public class Plazas extends JFrame {
         panelFlechas.add(bnder, gbc2);       
         
         //Action Listeners
-        //Boton 
+        //Boton Guardar
+
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarPlazas(Pid1.getText(), Pnom1.getText(), Psalari1.getText(), PCodiSUP1.getText(), PInfSUP1.getText(), PTipoPlaza1.getText());
+        });
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarPlazas(Pid2.getText(), Pnom2.getText(), Psalari2.getText(), PCodiSUP2.getText(), PInfSUP2.getText(), PTipoPlaza2.getText());
+        });
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarPlazas(Pid3.getText(), Pnom3.getText(), Psalari3.getText(), PCodiSUP3.getText(), PInfSUP3.getText(), PTipoPlaza3.getText());
+        });
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarPlazas(Pid4.getText(), Pnom4.getText(), Psalari4.getText(), PCodiSUP4.getText(), PInfSUP4.getText(), PTipoPlaza4.getText());
+        });
+        bnGuardar1.addActionListener(e -> {
+            Main.insertarPlazas(Pid5.getText(), Pnom5.getText(), Psalari5.getText(), PCodiSUP5.getText(), PInfSUP5.getText(), PTipoPlaza5.getText());
+        });
+
+
+        //Boton Borrar
+        bnBorrar1.addActionListener(e -> {
+            Pid1.setText("");
+            Pnom1.setText("");
+            Psalari1.setText("");
+            PCodiSUP1.setText("");
+            PInfSUP1.setText("");
+            PTipoPlaza1.setText("");
+        });
+        bnBorrar2.addActionListener(e -> {
+            Pid2.setText("");
+            Pnom2.setText("");
+            Psalari2.setText("");
+            PCodiSUP2.setText("");
+            PInfSUP2.setText("");
+            PTipoPlaza2.setText("");
+        });
+        bnBorrar3.addActionListener(e -> {
+            Pid3.setText("");
+            Pnom3.setText("");
+            Psalari3.setText("");
+            PCodiSUP3.setText("");
+            PInfSUP3.setText("");
+            PTipoPlaza3.setText("");
+        });
+        bnBorrar4.addActionListener(e -> {
+            Pid4.setText("");
+            Pnom4.setText("");
+            Psalari4.setText("");
+            PCodiSUP4.setText("");
+            PInfSUP4.setText("");
+            PTipoPlaza4.setText("");
+        });
+        bnBorrar5.addActionListener(e -> {
+            Pid5.setText("");
+            Pnom5.setText("");
+            Psalari5.setText("");
+            PCodiSUP5.setText("");
+            PInfSUP5.setText("");
+            PTipoPlaza5.setText("");
+        });
 
 
         add(panelFlechas, BorderLayout.SOUTH);
         add(panelNavegacion, BorderLayout.NORTH);
         add(panelMain);
         setVisible(true);
+
+        java.util.List<String[]> datos = Main.obtenerPlazas();
+        if (datos.size() > 0) {
+            Pid1.setText(datos.get(0)[0]);
+            Pnom1.setText(datos.get(0)[1]);
+            Psalari1.setText(datos.get(0)[2]);
+            PCodiSUP1.setText(datos.get(0)[3]);
+            PInfSUP1.setText(datos.get(0)[4]);
+            PTipoPlaza1.setText(datos.get(0)[5]);
+        }
+        if (datos.size() > 1) {
+            Pid2.setText(datos.get(0)[0]);
+            Pnom2.setText(datos.get(0)[1]);
+            Psalari2.setText(datos.get(0)[2]);
+            PCodiSUP2.setText(datos.get(0)[3]);
+            PInfSUP2.setText(datos.get(0)[4]);
+            PTipoPlaza2.setText(datos.get(0)[5]);
+        }
+        if (datos.size() > 2) {
+            Pid3.setText(datos.get(0)[0]);
+            Pnom3.setText(datos.get(0)[1]);
+            Psalari3.setText(datos.get(0)[2]);
+            PCodiSUP3.setText(datos.get(0)[3]);
+            PInfSUP3.setText(datos.get(0)[4]);
+            PTipoPlaza3.setText(datos.get(0)[5]);
+        }
+        if (datos.size() > 3) {
+            Pid4.setText(datos.get(0)[0]);
+            Pnom4.setText(datos.get(0)[1]);
+            Psalari4.setText(datos.get(0)[2]);
+            PCodiSUP4.setText(datos.get(0)[3]);
+            PInfSUP4.setText(datos.get(0)[4]);
+            PTipoPlaza4.setText(datos.get(0)[5]);
+        }
+        if (datos.size() > 4) {
+            Pid5.setText(datos.get(0)[0]);
+            Pnom5.setText(datos.get(0)[1]);
+            Psalari5.setText(datos.get(0)[2]);
+            PCodiSUP5.setText(datos.get(0)[3]);
+            PInfSUP5.setText(datos.get(0)[4]);
+            PTipoPlaza5.setText(datos.get(0)[5]);
+        }
 
     }
 }

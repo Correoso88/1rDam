@@ -6,13 +6,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.Border;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.awt.*;
 
 public class TiposDePlazas extends JFrame {
-    
+
     public TiposDePlazas() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,7 +25,7 @@ public class TiposDePlazas extends JFrame {
         JPanel panelNavegacion = new JPanel();
         panelNavegacion.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10); // espacio entre componentes
+        gbc.insets = new Insets(10, 10, 10, 10);
         gbc.weightx = 1.0;
         gbc.weighty = 0;
         gbc.fill = GridBagConstraints.BOTH;
@@ -50,23 +54,22 @@ public class TiposDePlazas extends JFrame {
         panelNavegacion.add(bnNominas, gbc);
         add(panelNavegacion, BorderLayout.NORTH);
 
-        //Action Listeners
-        //Boton Plazas
+        // Action Listeners
+        // Boton Plazas
         bnPlazas.addActionListener(e -> {
             new Plazas();
             dispose();
         });
-        //Boton Empleados
+        // Boton Empleados
         bnEmpleados.addActionListener(e -> {
             new Empleados();
             dispose();
         });
-        //Boton Nomina
+        // Boton Nomina
         bnNominas.addActionListener(e -> {
             new Nominas();
             dispose();
         });
-
 
         JPanel panelMain = new JPanel();
         panelMain.setLayout(new GridBagLayout());
@@ -75,29 +78,29 @@ public class TiposDePlazas extends JFrame {
         gbcP.weightx = 1.0;
         gbcP.weighty = 0;
         gbcP.fill = GridBagConstraints.BOTH;
-        
-        //Titulo
+
+        // Titulo
         gbcP.gridx = 0;
         gbcP.gridy = 0;
         gbcP.gridwidth = 4;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Tipos de Plazas"),gbcP);
+        panelMain.add(new JLabel("Tipos de Plazas"), gbcP);
 
-        //Jlabels
+        // Jlabels
         gbcP.gridx = 0;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
-        panelMain.add(new JLabel("Nombre"),gbcP);
+        panelMain.add(new JLabel("Nombre"), gbcP);
 
         gbcP.gridx = 1;
-        panelMain.add(new JLabel("Funcion"),gbcP);
+        panelMain.add(new JLabel("Funcion"), gbcP);
 
-        //Boton añadir
+        // Boton añadir
         gbcP.gridx = 2;
         gbcP.gridwidth = 2;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnAñadir = new JButton("Añadir");
-        panelMain.add(bnAñadir,gbcP);
+        panelMain.add(bnAñadir, gbcP);
 
         // Textfield nom 1
         gbcP.gridx = 0;
@@ -212,8 +215,6 @@ public class TiposDePlazas extends JFrame {
         gbcP.gridy = 6;
         JButton bnBorrar5 = new JButton("Borrar");
         panelMain.add(bnBorrar5, gbcP);
-        
-        
 
         JPanel panelFlechas = new JPanel();
         panelFlechas.setLayout(new GridBagLayout());
@@ -223,31 +224,96 @@ public class TiposDePlazas extends JFrame {
         gbc2.weighty = 0;
         gbc2.fill = GridBagConstraints.BOTH;
 
-        //Botones << >>
+        // Botones << >>
         gbc2.gridx = 0;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnizq = new JButton("<<");
-        panelFlechas.add(bnizq, gbc2);       
+        panelFlechas.add(bnizq, gbc2);
 
         gbc2.gridx = 1;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnder = new JButton(">>");
-        panelFlechas.add(bnder, gbc2);       
-        
-        //Action Listeners
-        //Boton 
+        panelFlechas.add(bnder, gbc2);
 
+        // Action Listeners
+        // Botones Guardar
+        bnGuardar1.addActionListener(e -> {
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
+            Main.insertarTipoPlaza(nombre, funcion);
+        });
+        bnGuardar2.addActionListener(e -> {
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
+            Main.insertarTipoPlaza(nombre, funcion);
+        });
+        bnGuardar3.addActionListener(e -> {
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
+            Main.insertarTipoPlaza(nombre, funcion);
+        });
+        bnGuardar4.addActionListener(e -> {
+            String nombre = TPnom4.getText();
+            String funcion = TPfuncio4.getText();
+            Main.insertarTipoPlaza(nombre, funcion);
+        });
+        bnGuardar5.addActionListener(e -> {
+            String nombre = TPnom5.getText();
+            String funcion = TPfuncio5.getText();
+            Main.insertarTipoPlaza(nombre, funcion);
+        });
+
+        //Boton Borrar
+        bnBorrar1.addActionListener(e -> {
+            TPfuncio1.setText("");
+            TPnom1.setText("");
+        });
+        bnBorrar2.addActionListener(e -> {
+            TPfuncio2.setText("");
+            TPnom2.setText("");
+        });
+        bnBorrar3.addActionListener(e -> {
+            TPfuncio3.setText("");
+            TPnom3.setText("");
+        });
+        bnBorrar4.addActionListener(e -> {
+            TPfuncio4.setText("");
+            TPnom4.setText("");
+        });
+        bnBorrar5.addActionListener(e -> {
+            TPfuncio5.setText("");
+            TPnom5.setText("");
+        });
 
         add(panelFlechas, BorderLayout.SOUTH);
-        add(panelMain,BorderLayout.CENTER);
+        add(panelMain, BorderLayout.CENTER);
         setVisible(true);
 
+        java.util.List<String[]> datos = Main.obtenerTiposPlaza();
+        if (datos.size() > 0) {
+            TPnom1.setText(datos.get(0)[0]);
+            TPfuncio1.setText(datos.get(0)[1]);
+        }
+        if (datos.size() > 1) {
+            TPnom2.setText(datos.get(1)[0]);
+            TPfuncio2.setText(datos.get(1)[1]);
+        }
+        if (datos.size() > 2) {
+            TPnom3.setText(datos.get(2)[0]);
+            TPfuncio3.setText(datos.get(2)[1]);
+        }
+        if (datos.size() > 3) {
+            TPnom4.setText(datos.get(3)[0]);
+            TPfuncio4.setText(datos.get(3)[1]);
+        }
+        if (datos.size() > 4) {
+            TPnom5.setText(datos.get(4)[0]);
+            TPfuncio5.setText(datos.get(4)[1]);
+        }
     }
-    
-
 
 }

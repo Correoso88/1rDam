@@ -41,43 +41,35 @@
     },
 
     {
-      "foto": "2",
-      "nombre": "2",
-      "descripcion": "2",
-      "categoria": "2",
-      "precio": 2
+      "foto": "Pendientes de oro blanco 18K diamante natural 0.04 ct.png",
+      "nombre": "Pendientes de oro blanco 18K diamante natural 0.04 ct",
+      "descripcion": "Este elegante pendiente en oro blanco destaca por su diseño sofisticado y luminoso. Presenta dos diamantes naturales con una claridad SI2 y un color H, que suman un total de 0,04 quilates, engastados en un atractivo sistema de cuatro garras.",
+      "categoria": "Pendiente",
+      "precio": 405
     },
 
     {
-      "foto": "3",
-      "nombre": "3",
-      "descripcion": "3",
-      "categoria": "3",
-      "precio": 3
+      "foto": "Pendientes de aro de oro 18K 25 mm.png",
+      "nombre": "Pendientes de aro de oro 18K 25 mm",
+      "descripcion": "Descubre nuestra elegante joya: un aro de diseño tubular cuadrado, liso y hueco, que combina modernidad y sofisticación. Con unas dimensiones de 25 mm de largo, 2 mm de ancho y 2 mm de grosor, este aro presenta un cierre catalán seguro y funcional.",
+      "categoria": "Pendiente",
+      "precio": 530
     },
 
     {
-      "foto": "4",
-      "nombre": "4",
-      "descripcion": "4",
-      "categoria": "4",
-      "precio": 4
+      "foto": "Collar de oro blanco 18K diamante natural.png",
+      "nombre": "Collar de oro blanco 18K diamante natural",
+      "descripcion": "Este elegante collar de oro blanco se presenta con una delicada cadena forzada de 0,95 mm. Destaca por la incorporación de 28 diamantes naturales de calidad SI2, clasificación H, cada uno con un corte brillante que suma un total de 0,30 quilates. ",
+      "categoria": "Collar",
+      "precio": 850
     },
 
     {
-      "foto": "4",
-      "nombre": "4",
-      "descripcion": "4",
-      "categoria": "4",
-      "precio": 5
-    },
-
-    {
-      "foto": "6",
-      "nombre": "6",
-      "descripcion": "6",
-      "categoria": "6",
-      "precio": 6
+      "foto": "anillocompromiso.png",
+      "nombre": "Anillo Compromiso Oro",
+      "descripcion": "Sus brazos se afinan para elevar un diamante central de talla brillante, sujeto por cuatro garras discretas que maximizan su luz. ",
+      "categoria": "Anillo",
+      "precio": 400
     }
   ]
 }

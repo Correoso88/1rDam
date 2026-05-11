@@ -1,19 +1,16 @@
 package es.cide.programacion;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.*;
-import javax.swing.border.Border;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import java.awt.*;
 
 public class TiposDePlazas extends JFrame {
 
@@ -247,13 +244,13 @@ public class TiposDePlazas extends JFrame {
             Main.insertarTipoPlaza(nombre, funcion);
         });
         bnGuardar2.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom2.getText();
+            String funcion = TPfuncio2.getText();
             Main.insertarTipoPlaza(nombre, funcion);
         });
         bnGuardar3.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom3.getText();
+            String funcion = TPfuncio3.getText();
             Main.insertarTipoPlaza(nombre, funcion);
         });
         bnGuardar4.addActionListener(e -> {

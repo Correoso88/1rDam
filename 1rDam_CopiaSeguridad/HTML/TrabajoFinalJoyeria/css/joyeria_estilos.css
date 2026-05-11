@@ -42,7 +42,7 @@ nav a {
     text-align: center;
 }
 
-.vista-productos {
+.vistaProductos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
     gap: 20px;
@@ -61,12 +61,15 @@ nav a {
     padding: 20px;
     text-align: center;
     transition: transform 0.2s;
+    padding: 0 20px 20px 20px;
 }
 
 .tarjeta-producto img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: 350px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    
 }
 
 
@@ -144,4 +147,21 @@ h3 {
 #Correo {
     display: flex;
     justify-content: center;
+}
+.Conocenos h3 {
+    text-decoration: underline;
+}
+.tarjeta-producto img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+.TuCompra {
+    text-align: center;
+}
+.Comprar {
+    text-align: center;
+    margin-top: 20px;
 }

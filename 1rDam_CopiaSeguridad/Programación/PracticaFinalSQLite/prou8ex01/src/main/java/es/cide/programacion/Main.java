@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
+import java.util.List;
 
 import javax.swing.UIManager;
 
@@ -12,7 +12,7 @@ public class Main {
     //Obtener Plazas
     public static List<String[]> obtenerPlazas() {
         String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "SELECT * FROM EMPLEADOS";
+        String sql = "SELECT * FROM EMPEADOS";
         java.util.List<String[]> lista = new java.util.ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url);

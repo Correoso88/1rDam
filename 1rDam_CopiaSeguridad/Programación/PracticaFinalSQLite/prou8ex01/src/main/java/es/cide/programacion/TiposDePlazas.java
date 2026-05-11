@@ -5,6 +5,10 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,7 +18,48 @@ import javax.swing.JTextField;
 
 public class TiposDePlazas extends JFrame {
 
-    public TiposDePlazas() {
+
+    private String nombre;
+    private String funcion;
+
+    public TiposDePlazas(String nombre, String funcion) {
+        this.nombre = nombre;
+        this.funcion = funcion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getFuncion() {
+        return funcion;
+    }
+
+
+
+    //Obtener Tipos de plazsa
+    public static List<TiposDePlazas> obtenerTiposPlaza() {
+        String url = "jdbc:sqlite:BaseDatos.db";
+        String sql = "SELECT * FROM TIPUS_PLACA";
+        java.util.List<String[]> lista = new java.util.ArrayList<>();
+
+        try (Connection con = DriverManager.getConnection(url);
+                java.sql.Statement stmt = con.createStatement();
+                java.sql.ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String nom = rs.getString("NOM");
+                String funcio = rs.getString("FUNCIO");
+                lista.add(new String[] { nom, funcio });
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lista;
+    }
+
+
+    {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -290,7 +335,7 @@ public class TiposDePlazas extends JFrame {
         add(panelMain, BorderLayout.CENTER);
         setVisible(true);
 
-        java.util.List<String[]> datos = Main.obtenerTiposPlaza();
+        List<String[]> datos = obtenerTiposPlaza();
         if (datos.size() > 0) {
             TPnom1.setText(datos.get(0)[0]);
             TPfuncio1.setText(datos.get(0)[1]);
@@ -311,6 +356,8 @@ public class TiposDePlazas extends JFrame {
             TPnom5.setText(datos.get(4)[0]);
             TPfuncio5.setText(datos.get(4)[1]);
         }
+        
     }
 
+        
 }

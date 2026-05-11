@@ -5,22 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMJoyeros - Inicio</title>
     <link rel="stylesheet" href="css/joyeria_estilos.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <div class="logos">
             <a href="index.html"><img id="logo-principal" src="img/Logojoyeria.png"></a>
-            <div>
+            <div class="header-idiomas">
                 <a href="inicioSesion.html"><img src="img/InicioDeSesion.png" class="icono"></a>
                 <a href="carrito.html"><img src="img/IconoCesta.png" class="icono"></a>
+                <a href="">ES</a> |
+                <a href="">EN</a>
             </div>
         </div>
         <nav>
             <a href="index.html">Inicio</a>
             <a href="productos.html">Listado de Productos</a>
             <a href="Contactos.html">Conócenos</a>
+            <div id="usuario"></div>
         </nav>
     </header>
     <main>
@@ -31,37 +33,13 @@
         </section>
 
         
-        <section class="vistaProductos">
-            <article class="tarjeta-producto">
-                <img src="img/anillocompromiso.png">
-                <h3> <a href="detalles.html">Anillo Compromiso Oro</a></h3>
-                <p class="precio">1.200€</p>
-                <div class="acciones-producto">
-                    <button>Añadir a la cesta</button>
-                    <a href="detalles.html"></a>
-                </div>
-            </article>
-            <article class="tarjeta-producto">
-                <img src="img/anillosBodas.jpg">
-                <h3><a href="detalles.html">Alianza Clásica</a></h3>
-                <p class="precio">850€</p>
-                <div class="acciones-producto">
-                    <button>Añadir a la cesta</button>       
-                </div>
-            </article>
-            <article class="tarjeta-producto">
-                <img src="img/pendiente-removebg-preview.png">
-                <h3><a href="detalles.html">Pendiente corte redondo</a></h3>
-                <p class="precio">850€</p>
-                <div class="acciones-producto">
-                    <button>Añadir a la cesta</button>    
-                </div>
-            </article>
+        <section class="vistaProductos" id="lista-productos-index">
+
         </section>
     </main>
     <footer>
         <p>&copy; 2026 CMJoyeros - Todos los derechos reservados. Palma de Mallorca, Baleares.</p>
     </footer>
-
+    <script src="js/script.js"></script>
 </body>
 </html>

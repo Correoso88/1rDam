@@ -11,9 +11,11 @@
     <header>
         <div class="logos">
             <a href="index.html"><img id="logo-principal" src="img/Logojoyeria.png"></a>
-            <div>
-                <a href="inicioSesion.html"><img src="img/InicioDeSesion.png"class="icono"></a>
-                <a href="carrito.html"><img src="img/IconoCesta.png"class="icono"></a>
+            <div class="header-idiomas">
+                <a href="inicioSesion.html"><img src="img/InicioDeSesion.png" class="icono"></a>
+                <a href="carrito.html"><img src="img/IconoCesta.png" class="icono"></a>
+                <a href="">ES</a> |
+                <a href="">EN</a>
             </div>
         </div>
 
@@ -21,13 +23,14 @@
             <a href="index.html">Inicio</a>
             <a href="productos.html">Listado de Productos</a>
             <a href="Contactos.html">Conócenos</a>
+            <div id="usuario"></div>
         </nav>
     </header>
     <main class = "inicioSesion">
         <form action="inicioSesion.html" method="post" id="login">
             <h1>Cuenta de CMJOYEROS</h1>
             <label>Usuario:
-                <input type="text" id="Usuario" name="Usuario" required placeholder="Nombre de usuario">
+                <input type="text" id="Usuario" name="Usuario" required placeholder="Nombre de Usuario">
             </label>
             
             <label>Contraseña:
@@ -36,8 +39,6 @@
             <button name="IniciarSesion" id="IniciarSesion">Inicia Sesion</button>
             
         </form>
-    <button id="CerrarSesion" onclick="CerrarSesion()">CerrarSesion</button>
-        
     </main>
     <footer>
       <p>&copy; 2024 CMJoyeros - Taller de Joyería en Baleares</p>

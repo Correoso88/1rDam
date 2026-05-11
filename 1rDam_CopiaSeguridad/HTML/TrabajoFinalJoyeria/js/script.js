@@ -26,24 +26,42 @@ function ValidarContraseña(event) {
   } else if (!tieneNumero) {
     alert("Falta un número");
   } else {
-    alert("Contraseña Correcta");
-    sessionStorage.setItem("Usuario", inputUsuario.textContent);
+    sessionStorage.setItem("Usuario", inputUsuario.value);
     alert("Se ha iniciado sesion");
+    location.reload();
   }
 }
 
-function CerrarSesion() {
-  alert("Adios " + inputUsuario.value);
-  sessionStorage.clear();
+function mostrarUsuario() {
+    let Usuario = sessionStorage.getItem("Usuario");
+
+    let ubiUsuario = document.getElementById("usuario");
+
+    if (ubiUsuario && Usuario) {
+        ubiUsuario.innerHTML = `
+            <p>${Usuario}</p>
+            <button onclick="CerrarSesion()">Salir</button>
+        `;
+    }
 }
+
+window.addEventListener("DOMContentLoaded", mostrarUsuario);
+
+function CerrarSesion() {
+  let usuario = sessionStorage.getItem("Usuario");
+  alert("Adiós " + usuario);
+  sessionStorage.clear();
+  location.reload();
+}
+
 let jsonData;
 async function cargarProductos() {
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
-  const contenedor = document.getElementById("lista-productos");
+  const listaProductos = document.getElementById("lista-productos");
 
   jsonData.productos.forEach((producto, i) => {
-    contenedor.innerHTML += `
+    listaProductos.innerHTML += `
         <article class="tarjeta-producto">
             <img src="img/${producto.foto}" alt="${producto.nombre}">
             <h3><a href="detalles.html?id=${i}">${producto.nombre}</a></h3>
@@ -53,7 +71,29 @@ async function cargarProductos() {
     `;
   });
 }
-cargarProductos();
+if (document.getElementById("lista-productos")) {
+    cargarProductos();
+}
+async function cargarProductosIndex() {
+  const response = await fetch("Datos/datosProducto.json");
+  const jsonData = await response.json();
+  const listaProductosIndice = document.getElementById("lista-productos-index");
+  if (!listaProductosIndice) return;
+  for(let i = 0;i<3;i++){
+      const producto = jsonData.productos[i];
+      listaProductosIndice.innerHTML += `
+        <article class="tarjeta-producto">
+            <img src="img/${producto.foto}" alt="${producto.nombre}">
+            <h3><a href="detalles.html?id=${i}">${producto.nombre}</a></h3>
+            <p class="precio">${producto.precio}€</p>
+            <button onclick="añadirCesta(${i})">Añadir a la cesta</button>
+        </article>
+    `;
+  }
+}
+if (document.getElementById("lista-productos-index")) {
+    cargarProductosIndex();
+}
 
 async function cargarDetalle() {
   const contenedor = document.getElementById("ficha-producto");
@@ -64,7 +104,7 @@ async function cargarDetalle() {
   const producto = jsonData.productos[id];
   contenedor.innerHTML = `
         <div class="imagen-detalle">
-          <img src="img/${producto.foto}" alt="${producto.nombre}">
+          <img src="img/${producto.foto}" alt="${producto.nombre}" width="50px">
         </div>
         <div>
           <h1>${producto.nombre}</h1>
@@ -75,7 +115,9 @@ async function cargarDetalle() {
         </div>
     `;
 }
-cargarDetalle();
+if (document.getElementById("ficha-producto")) {
+    cargarDetalle()
+}
 
 function añadirCesta(i) {
   let cesta = JSON.parse(localStorage.getItem("cesta")) || [];
@@ -104,12 +146,10 @@ async function cargarCesta() {
         `;
   });
 }
-
+cargarCesta();
 function eliminarCesta(i) {
-  let cesta = JSON.parse(localStorage.getItem("cesta")) || [];
+  let cesta = JSON.parse(localStorage.getItem("cesta"))||[];
   cesta = cesta.filter(item => item !== i);
   localStorage.setItem("cesta", JSON.stringify(cesta));
   location.reload();
 }
-
-cargarCesta();

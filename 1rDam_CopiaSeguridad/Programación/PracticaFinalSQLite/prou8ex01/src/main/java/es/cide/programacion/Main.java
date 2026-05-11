@@ -33,27 +33,6 @@ public class Main {
         }
         return lista;
     }
-    
-    //Obtener Tipos de plazsa
-    public static List<String[]> obtenerTiposPlaza() {
-        String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "SELECT * FROM TIPUS_PLACA";
-        java.util.List<String[]> lista = new java.util.ArrayList<>();
-
-        try (Connection con = DriverManager.getConnection(url);
-                java.sql.Statement stmt = con.createStatement();
-                java.sql.ResultSet rs = stmt.executeQuery(sql)) {
-
-            while (rs.next()) {
-                String nom = rs.getString("NOM");
-                String funcio = rs.getString("FUNCIO");
-                lista.add(new String[] { nom, funcio });
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return lista;
-    }
 
     // Metodo obtener Empleados
     public static List<String[]> obtenerEmpleados() {
@@ -197,7 +176,7 @@ public class Main {
         }
         Main app = new Main();
         app.crearBaseDeDatos();
-        obtenerTiposPlaza();
+        TiposDePlazas.obtenerTiposPlaza();
         new TiposDePlazas();
 
     }

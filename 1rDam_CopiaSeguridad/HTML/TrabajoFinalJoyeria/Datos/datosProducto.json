@@ -1,7 +1,7 @@
 {
   "productos": [
     {
-      "foto": "Anillo gallonado de oro amarillo de 18k.png",
+      "foto": "anillocompromisoBlanco.png",
       "nombre": "Anillo Compromiso Oro Blanco",
       "descripcion": "Pieza exclusiva fabricada en oro blanco de 18 quilates con un acabado pulido espejo. Incluye estuche de lujo y certificado de autenticidad.",
       "categoria": "Anillo",
@@ -10,7 +10,7 @@
 
     {
       "foto": "Anillo gallonado de oro amarillo de 18k.png",
-      "nombre": "Anillo gallonado de oro amarillo de 18k",
+      "nombre": "Anillo gallonado de oro",
       "descripcion": "Volumen y diseño en este anillo de oro amarillo de la colección Gallón, una joya con carácter que destaca por su sofisticación y que explora nuevas siluetas llenas de movimiento. Esta joya ha sido elaborada",
       "categoria": "Anillo",
       "precio": 2520
@@ -18,7 +18,7 @@
 
     {
       "foto": "Colgante de oro amarillo de 18K con diamante en talla brillante.png",
-      "nombre": "Colgante de oro amarillo de 18K con diamante en talla brillante",
+      "nombre": "Colgante de oro con diamante",
       "descripcion": "Este colgante de la colección Idalia combina el oro amarillo de 18K con un diamante central en talla brillante que actúa como verdadero protagonista.",
       "categoria": "Collar",
       "precio": 1600
@@ -69,7 +69,7 @@
       "nombre": "Anillo Compromiso Oro",
       "descripcion": "Sus brazos se afinan para elevar un diamante central de talla brillante, sujeto por cuatro garras discretas que maximizan su luz. ",
       "categoria": "Anillo",
-      "precio": 400
+      "precio": 1020
     }
   ]
 }

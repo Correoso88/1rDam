@@ -1,65 +1,16 @@
-package es.cide.programacion;
+package es.cide.programacion.Ventana;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
 
-public class TiposDePlazas extends JFrame {
+import es.cide.programacion.Main;
+import es.cide.programacion.Logica.TiposDePlazas;
+import es.cide.programacion.*;
 
-
-    private String nombre;
-    private String funcion;
-
-    public TiposDePlazas(String nombre, String funcion) {
-        this.nombre = nombre;
-        this.funcion = funcion;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getFuncion() {
-        return funcion;
-    }
-
-
-
-    //Obtener Tipos de plazsa
-    public static List<TiposDePlazas> obtenerTiposPlaza() {
-        String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "SELECT * FROM TIPUS_PLACA";
-        java.util.List<String[]> lista = new java.util.ArrayList<>();
-
-        try (Connection con = DriverManager.getConnection(url);
-                java.sql.Statement stmt = con.createStatement();
-                java.sql.ResultSet rs = stmt.executeQuery(sql)) {
-
-            while (rs.next()) {
-                String nom = rs.getString("NOM");
-                String funcio = rs.getString("FUNCIO");
-                lista.add(new String[] { nom, funcio });
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return lista;
-    }
-
-
-    {
+public class VentanaTiposDePlazas extends JFrame {
+    public VentanaTiposDePlazas() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -99,17 +50,17 @@ public class TiposDePlazas extends JFrame {
         // Action Listeners
         // Boton Plazas
         bnPlazas.addActionListener(e -> {
-            new Plazas();
+            new VentanaPlazas();
             dispose();
         });
         // Boton Empleados
         bnEmpleados.addActionListener(e -> {
-            new Empleados();
+            new VentanaEmpleados();
             dispose();
         });
         // Boton Nomina
         bnNominas.addActionListener(e -> {
-            new Nominas();
+            new VentanaNominas();
             dispose();
         });
 
@@ -286,30 +237,30 @@ public class TiposDePlazas extends JFrame {
         bnGuardar1.addActionListener(e -> {
             String nombre = TPnom1.getText();
             String funcion = TPfuncio1.getText();
-            Main.insertarTipoPlaza(nombre, funcion);
+            List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
         });
         bnGuardar2.addActionListener(e -> {
             String nombre = TPnom2.getText();
             String funcion = TPfuncio2.getText();
-            Main.insertarTipoPlaza(nombre, funcion);
+            List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
         });
         bnGuardar3.addActionListener(e -> {
             String nombre = TPnom3.getText();
             String funcion = TPfuncio3.getText();
-            Main.insertarTipoPlaza(nombre, funcion);
+            List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
         });
         bnGuardar4.addActionListener(e -> {
             String nombre = TPnom4.getText();
             String funcion = TPfuncio4.getText();
-            Main.insertarTipoPlaza(nombre, funcion);
+            List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
         });
         bnGuardar5.addActionListener(e -> {
             String nombre = TPnom5.getText();
             String funcion = TPfuncio5.getText();
-            Main.insertarTipoPlaza(nombre, funcion);
+            List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
         });
 
-        //Boton Borrar
+        // Boton Borrar
         bnBorrar1.addActionListener(e -> {
             TPfuncio1.setText("");
             TPnom1.setText("");
@@ -335,29 +286,31 @@ public class TiposDePlazas extends JFrame {
         add(panelMain, BorderLayout.CENTER);
         setVisible(true);
 
-        List<String[]> datos = obtenerTiposPlaza();
-        if (datos.size() > 0) {
-            TPnom1.setText(datos.get(0)[0]);
-            TPfuncio1.setText(datos.get(0)[1]);
+        List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+        if (lista.size() > 0) {
+            TPnom1.setText(lista.get(0).getNombre());
+            TPfuncio1.setText(lista.get(0).getFuncion());
         }
-        if (datos.size() > 1) {
-            TPnom2.setText(datos.get(1)[0]);
-            TPfuncio2.setText(datos.get(1)[1]);
-        }
-        if (datos.size() > 2) {
-            TPnom3.setText(datos.get(2)[0]);
-            TPfuncio3.setText(datos.get(2)[1]);
-        }
-        if (datos.size() > 3) {
-            TPnom4.setText(datos.get(3)[0]);
-            TPfuncio4.setText(datos.get(3)[1]);
-        }
-        if (datos.size() > 4) {
-            TPnom5.setText(datos.get(4)[0]);
-            TPfuncio5.setText(datos.get(4)[1]);
-        }
-        
-    }
 
-        
+        if (lista.size() > 1) {
+            TPnom2.setText(lista.get(1).getNombre());
+            TPfuncio2.setText(lista.get(1).getFuncion());
+        }
+
+        if (lista.size() > 2) {
+            TPnom3.setText(lista.get(2).getNombre());
+            TPfuncio3.setText(lista.get(2).getFuncion());
+        }
+
+        if (lista.size() > 3) {
+            TPnom4.setText(lista.get(3).getNombre());
+            TPfuncio4.setText(lista.get(3).getFuncion());
+        }
+
+        if (lista.size() > 4) {
+            TPnom5.setText(lista.get(4).getNombre());
+            TPfuncio5.setText(lista.get(4).getFuncion());
+        }
+
+    }
 }

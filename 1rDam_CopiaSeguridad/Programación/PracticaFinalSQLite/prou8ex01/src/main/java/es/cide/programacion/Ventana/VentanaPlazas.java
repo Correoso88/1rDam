@@ -1,18 +1,12 @@
-package es.cide.programacion;
+package es.cide.programacion.Ventana;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-import javax.swing.border.Border;
-
+import javax.swing.*;
 import java.awt.*;
 
-public class Plazas extends JFrame {
-    public Plazas() {
+import es.cide.programacion.*;
+
+public class VentanaPlazas extends JFrame{
+    public VentanaPlazas() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -52,17 +46,17 @@ public class Plazas extends JFrame {
         //Action Listeners
         //Boton Tipos de Plazas
         bnTPlazas.addActionListener(e -> {
-            new TiposDePlazas();
+            new VentanaTiposDePlazas();
             dispose();
         });
         //Boton Empleados
         bnEmpleados.addActionListener(e -> {
-            new Empleados();
+            new VentanaEmpleados();
             dispose();
         });
         //Boton Nomina
         bnNominas.addActionListener(e -> {
-            new Nominas();
+            new VentanaNominas();
             dispose();
         });
 
@@ -544,48 +538,5 @@ public class Plazas extends JFrame {
         add(panelNavegacion, BorderLayout.NORTH);
         add(panelMain);
         setVisible(true);
-
-        java.util.List<String[]> datos = Main.obtenerPlazas();
-        if (datos.size() > 0) {
-            Pid1.setText(datos.get(0)[0]);
-            Pnom1.setText(datos.get(0)[1]);
-            Psalari1.setText(datos.get(0)[2]);
-            PCodiSUP1.setText(datos.get(0)[3]);
-            PInfSUP1.setText(datos.get(0)[4]);
-            PTipoPlaza1.setText(datos.get(0)[5]);
-        }
-        if (datos.size() > 1) {
-            Pid2.setText(datos.get(0)[0]);
-            Pnom2.setText(datos.get(0)[1]);
-            Psalari2.setText(datos.get(0)[2]);
-            PCodiSUP2.setText(datos.get(0)[3]);
-            PInfSUP2.setText(datos.get(0)[4]);
-            PTipoPlaza2.setText(datos.get(0)[5]);
-        }
-        if (datos.size() > 2) {
-            Pid3.setText(datos.get(0)[0]);
-            Pnom3.setText(datos.get(0)[1]);
-            Psalari3.setText(datos.get(0)[2]);
-            PCodiSUP3.setText(datos.get(0)[3]);
-            PInfSUP3.setText(datos.get(0)[4]);
-            PTipoPlaza3.setText(datos.get(0)[5]);
-        }
-        if (datos.size() > 3) {
-            Pid4.setText(datos.get(0)[0]);
-            Pnom4.setText(datos.get(0)[1]);
-            Psalari4.setText(datos.get(0)[2]);
-            PCodiSUP4.setText(datos.get(0)[3]);
-            PInfSUP4.setText(datos.get(0)[4]);
-            PTipoPlaza4.setText(datos.get(0)[5]);
-        }
-        if (datos.size() > 4) {
-            Pid5.setText(datos.get(0)[0]);
-            Pnom5.setText(datos.get(0)[1]);
-            Psalari5.setText(datos.get(0)[2]);
-            PCodiSUP5.setText(datos.get(0)[3]);
-            PInfSUP5.setText(datos.get(0)[4]);
-            PTipoPlaza5.setText(datos.get(0)[5]);
-        }
-
     }
 }

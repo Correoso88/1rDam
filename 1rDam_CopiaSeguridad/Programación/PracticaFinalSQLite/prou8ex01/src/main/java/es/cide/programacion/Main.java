@@ -1,18 +1,39 @@
 package es.cide.programacion;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.List;
 
 import javax.swing.UIManager;
 
+import es.cide.programacion.Logica.TiposDePlazas;
+import es.cide.programacion.Ventana.VentanaTiposDePlazas;
+
 public class Main {
-    //Obtener Plazas
+    // Obtener Tipos de plazsa
+    public static List<TiposDePlazas> obtenerTiposPlaza() {
+        String url = "jdbc:sqlite:BaseDatos.db";
+        String sql = "SELECT * FROM TIPUS_PLACA";
+        List<TiposDePlazas> lista = new java.util.ArrayList<>();
+
+        try (Connection con = DriverManager.getConnection(url);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                String nom = rs.getString("NOM");
+                String funcio = rs.getString("FUNCIO");
+                lista.add(new TiposDePlazas( nom, funcio ));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lista;
+    }
+
+    // Obtener Plazas
     public static List<String[]> obtenerPlazas() {
         String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "SELECT * FROM EMPEADOS";
+        String sql = "SELECT * FROM EMLPEADOS";
         java.util.List<String[]> lista = new java.util.ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url);
@@ -58,7 +79,6 @@ public class Main {
         return lista;
     }
 
-
     // Metodo obtener Nominas
     public static List<String[]> obtenerNominas() {
         String url = "jdbc:sqlite:BaseDatos.db";
@@ -99,7 +119,8 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-        // Instertar Empleados
+
+    // Instertar Empleados
     public static void insertarEmpleados(String nss, String nom, String apellido, String email, String IBAN) {
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "INSERT INTO EMPLEADOS (NSS, NOM, LLINATGES, EMAIL, IBAN) VALUES (?, ?, ?, ?, ?)";
@@ -118,8 +139,10 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-        // Instertar Plazas
-    public static void insertarPlazas(String codi, String nom, String salari, String id_sup, String info_sup, String tipoPlazas) {
+
+    // Instertar Plazas
+    public static void insertarPlazas(String codi, String nom, String salari, String id_sup, String info_sup,
+            String tipoPlazas) {
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "INSERT INTO PLACA (CODI, NOM, SALARI, CODI_SUPERVISORA, INFORME_SUPERVISIO, NOM_TIPUS) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -176,8 +199,6 @@ public class Main {
         }
         Main app = new Main();
         app.crearBaseDeDatos();
-        TiposDePlazas.obtenerTiposPlaza();
-        new TiposDePlazas();
-
+        new VentanaTiposDePlazas();
     }
 }

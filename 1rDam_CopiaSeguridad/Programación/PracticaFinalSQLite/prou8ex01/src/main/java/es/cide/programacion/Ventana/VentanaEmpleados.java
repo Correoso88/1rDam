@@ -1,15 +1,13 @@
-package es.cide.programacion;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
+package es.cide.programacion.Ventana;
 
+import javax.swing.*;
 import java.awt.*;
-public class Nominas extends JFrame {
-public Nominas() {
+
+import es.cide.programacion.*;
+
+
+public class VentanaEmpleados extends JFrame{
+    public VentanaEmpleados() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -37,31 +35,31 @@ public Nominas() {
         gbc.gridx = 2;
         gbc.gridy = 0;
         JButton bnEmpleados = new JButton("Empleados");
+        bnEmpleados.setBackground(Color.gray);
         panelNavegacion.add(bnEmpleados, gbc);
 
         gbc.gridx = 3;
         gbc.gridy = 0;
         JButton bnNominas = new JButton("Nominas");
-        bnNominas.setBackground(Color.gray);
         panelNavegacion.add(bnNominas, gbc);
-        add(panelNavegacion, BorderLayout.NORTH);
-
+        
         //Action Listeners
-        //Boton Tipos de Plazas
-        bnTPlazas.addActionListener(e -> {
-            new TiposDePlazas();
-            dispose();
-        });
-        //Boton Empleados
-        bnEmpleados.addActionListener(e -> {
-            new Empleados();
-            dispose();
-        });
         //Boton Plazas
         bnPlazas.addActionListener(e -> {
-            new Plazas();
+            new VentanaPlazas();
             dispose();
         });
+        //Boton TiposDePlazas
+        bnTPlazas.addActionListener(e -> {
+            new VentanaTiposDePlazas();
+            dispose();
+        });
+        //Boton Nomina
+        bnNominas.addActionListener(e -> {
+            new VentanaNominas();
+            dispose();
+        });
+
         JPanel panelMain = new JPanel();
         panelMain.setLayout(new GridBagLayout());
         GridBagConstraints gbcP = new GridBagConstraints();
@@ -75,38 +73,38 @@ public Nominas() {
         gbcP.gridy = 0;
         gbcP.gridwidth = 9;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Nominas"),gbcP);
+        panelMain.add(new JLabel("Empleados"),gbcP);
 
         //Jlabels
         gbcP.gridx = 0;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("ID Empleados"),gbcP);
+        panelMain.add(new JLabel("NSS"),gbcP);
 
         gbcP.gridx = 1;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("IBAN_Pago"),gbcP);
+        panelMain.add(new JLabel("Nombre"),gbcP);
 
         gbcP.gridx = 2;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Importe"),gbcP);
+        panelMain.add(new JLabel("Apellidos"),gbcP);
 
         gbcP.gridx = 3;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("NSS"),gbcP);
+        panelMain.add(new JLabel("Email"),gbcP);
 
         gbcP.gridx = 4;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Codigo Plaza"),gbcP);
+        panelMain.add(new JLabel("IBAN"),gbcP);
 
         //Boton añadir
         gbcP.gridx = 5;
@@ -118,45 +116,45 @@ public Nominas() {
 
 
         //PRIMERA FILA
-        // Textfield ID 1
+        // Textfield NSS 1
         gbcP.gridx = 0;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NID1 = new JTextField();
-        panelMain.add(NID1, gbcP);
+        JTextField ENSS1 = new JTextField();
+        panelMain.add(ENSS1, gbcP);
 
-        // Textfield IBAN_Pago 1
+        // Textfield Nombre 1
         gbcP.gridx = 1;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIBAN_Pago1 = new JTextField();
-        panelMain.add(NIBAN_Pago1, gbcP);
+        JTextField Enom1 = new JTextField();
+        panelMain.add(Enom1, gbcP);
 
-        // Textfield Importe 1
+        // Textfield Apellidos 1
         gbcP.gridx = 2;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NImport1 = new JTextField();
-        panelMain.add(NImport1, gbcP);
+        JTextField Eapellido1 = new JTextField();
+        panelMain.add(Eapellido1, gbcP);
 
-        // Textfield NSS 1
+        // Textfield Email 1
         gbcP.gridx = 3;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NNSS1 = new JTextField();
-        panelMain.add(NNSS1, gbcP);
+        JTextField Eemail1 = new JTextField();
+        panelMain.add(Eemail1, gbcP);
 
-        // Textfield ID Plaza 1
+        // Textfield IBAN 1
         gbcP.gridx = 4;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIDPla1= new JTextField();
-        panelMain.add(NIDPla1, gbcP);
+        JTextField EIBAN1 = new JTextField();
+        panelMain.add(EIBAN1, gbcP);
 
         // Boton Guardar 1
         gbcP.gridx = 5;
@@ -176,45 +174,45 @@ public Nominas() {
         panelMain.add(bnBorrar1, gbcP);
 
         //SEGUNDA FILA
-        // Textfield ID Nomina 2
+        // Textfield NSS 2
         gbcP.gridx = 0;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NID2 = new JTextField();
-        panelMain.add(NID2, gbcP);
+        JTextField ENSS2 = new JTextField();
+        panelMain.add(ENSS2, gbcP);
 
         // Textfield nom 2
         gbcP.gridx = 1;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIBAN_Pago2 = new JTextField();
-        panelMain.add(NIBAN_Pago2, gbcP);
+        JTextField Enom2 = new JTextField();
+        panelMain.add(Enom2, gbcP);
 
-        // Textfield Importe 2
+        // Textfield Apellidos 2
         gbcP.gridx = 2;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NImport2 = new JTextField();
-        panelMain.add(NImport2, gbcP);
+        JTextField Eapellido2 = new JTextField();
+        panelMain.add(Eapellido2, gbcP);
 
-        // Textfield NSS 2
+        // Textfield Email 2
         gbcP.gridx = 3;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NNSS2 = new JTextField();
-        panelMain.add(NNSS2, gbcP);
+        JTextField Eemail2 = new JTextField();
+        panelMain.add(Eemail2, gbcP);
 
-        // Textfield ID Plaza 2
+        // Textfield IBAN 2
         gbcP.gridx = 4;
         gbcP.gridy = 3;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIDPla2 = new JTextField();
-        panelMain.add(NIDPla2, gbcP);
+        JTextField EIBAN2 = new JTextField();
+        panelMain.add(EIBAN2, gbcP);
 
         // Boton Guardar 2
         gbcP.gridx = 5;
@@ -233,45 +231,45 @@ public Nominas() {
         panelMain.add(bnBorrar2, gbcP);
 
         //Tercera Fila
-        // Textfield ID 3
+        // Textfield NSS 3
         gbcP.gridx = 0;
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NID3 = new JTextField();
-        panelMain.add(NID3, gbcP);
+        JTextField ENSS3 = new JTextField();
+        panelMain.add(ENSS3, gbcP);
 
-        // Textfield ID Plaza 3
+        // Textfield Nombre 3
         gbcP.gridx = 1;
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIBAN_Pago3 = new JTextField();
-        panelMain.add(NIBAN_Pago3, gbcP);
+        JTextField Enom3 = new JTextField();
+        panelMain.add(Enom3, gbcP);
 
-        // Textfield Importe 3
+        // Textfield Apellidos 3
         gbcP.gridx = 2;
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NImport3 = new JTextField();
-        panelMain.add(NImport3, gbcP);
+        JTextField Eapellido3 = new JTextField();
+        panelMain.add(Eapellido3, gbcP);
 
-        // Textfield NSS 3
+        // Textfield Email 3
         gbcP.gridx = 3;
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NNSS3 = new JTextField();
-        panelMain.add(NNSS3, gbcP);
+        JTextField Eemail3 = new JTextField();
+        panelMain.add(Eemail3, gbcP);
 
-        // Textfield ID Plaza 3
+        // Textfield IBAN 3
         gbcP.gridx = 4;
         gbcP.gridy = 4;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIDPla3 = new JTextField();
-        panelMain.add(NIDPla3, gbcP);
+        JTextField EIBAN3 = new JTextField();
+        panelMain.add(EIBAN3, gbcP);
 
         // Boton Guardar 3
         gbcP.gridx = 5;
@@ -290,45 +288,45 @@ public Nominas() {
         panelMain.add(bnBorrar3, gbcP);
 
         //QUARTA FILA
-        // Textfield ID 4
+        // Textfield NSS 4
         gbcP.gridx = 0;
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NID4 = new JTextField();
-        panelMain.add(NID4, gbcP);
+        JTextField ENSS4 = new JTextField();
+        panelMain.add(ENSS4, gbcP);
 
-        // Textfield ID Plaza 4
+        // Textfield Nombre 4
         gbcP.gridx = 1;
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIBAN_Pago4 = new JTextField();
-        panelMain.add(NIBAN_Pago4, gbcP);
+        JTextField Enom4 = new JTextField();
+        panelMain.add(Enom4, gbcP);
 
-        // Textfield Importe 4
+        // Textfield Apellidos 4
         gbcP.gridx = 2;
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NImport4 = new JTextField();
-        panelMain.add(NImport4, gbcP);
+        JTextField Eapellido4 = new JTextField();
+        panelMain.add(Eapellido4, gbcP);
 
-        // Textfield NSS 4
+        // Textfield Email 4
         gbcP.gridx = 3;
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NNSS4 = new JTextField();
-        panelMain.add(NNSS4, gbcP);
+        JTextField Eemail4 = new JTextField();
+        panelMain.add(Eemail4, gbcP);
 
-        // Textfield ID Plaza 4
+        // Textfield IBAN 4
         gbcP.gridx = 4;
         gbcP.gridy = 5;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIDPla4 = new JTextField();
-        panelMain.add(NIDPla4, gbcP);
+        JTextField EIBAN4 = new JTextField();
+        panelMain.add(EIBAN4, gbcP);
 
         // Boton Guardar 4
         gbcP.gridx = 5;
@@ -347,45 +345,45 @@ public Nominas() {
         panelMain.add(bnBorrar4, gbcP);
 
         //QUINTA FILA
-        // Textfield ID 5
+        // Textfield NSS 5
         gbcP.gridx = 0;
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NID5 = new JTextField();
-        panelMain.add(NID5, gbcP);
+        JTextField ENSS5 = new JTextField();
+        panelMain.add(ENSS5, gbcP);
 
-        // Textfield ID Plaza 5
+        // Textfield Nombre 5
         gbcP.gridx = 1;
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIBAN_Pago5 = new JTextField();
-        panelMain.add(NIBAN_Pago5, gbcP);
+        JTextField Enom5 = new JTextField();
+        panelMain.add(Enom5, gbcP);
 
-        // Textfield Importe 5
+        // Textfield Apellidos 5
         gbcP.gridx = 2;
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NImport5 = new JTextField();
-        panelMain.add(NImport5, gbcP);
+        JTextField Eapellido5 = new JTextField();
+        panelMain.add(Eapellido5, gbcP);
 
-        // Textfield NSS 5
+        // Textfield Email 5
         gbcP.gridx = 3;
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NNSS5 = new JTextField();
-        panelMain.add(NNSS5, gbcP);
+        JTextField Eemail5 = new JTextField();
+        panelMain.add(Eemail5, gbcP);
 
         // Textfield IBAN 5
         gbcP.gridx = 4;
         gbcP.gridy = 6;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
-        JTextField NIDPla5 = new JTextField();
-        panelMain.add(NIDPla5, gbcP);
+        JTextField EIBAN5 = new JTextField();
+        panelMain.add(EIBAN5, gbcP);
 
         // Boton Guardar 5
         gbcP.gridx = 5;
@@ -429,70 +427,62 @@ public Nominas() {
         //Action Listeners
         //Boton Guardar
         bnGuardar1.addActionListener(e -> {
-
+            Main.insertarEmpleados(ENSS1.getText(), Enom1.getText(), Eapellido1.getText(), Eemail1.getText(), EIBAN1.getText());
         });
         bnGuardar2.addActionListener(e -> {
-
+            Main.insertarEmpleados(ENSS2.getText(), Enom2.getText(), Eapellido2.getText(), Eemail2.getText(), EIBAN2.getText());
         });
         bnGuardar3.addActionListener(e -> {
-
+            Main.insertarEmpleados(ENSS3.getText(), Enom3.getText(), Eapellido3.getText(), Eemail3.getText(), EIBAN3.getText());
         });
         bnGuardar4.addActionListener(e -> {
-
+            Main.insertarEmpleados(ENSS4.getText(), Enom4.getText(), Eapellido4.getText(), Eemail4.getText(), EIBAN4.getText());
         });
         bnGuardar5.addActionListener(e -> {
-
+            Main.insertarEmpleados(ENSS5.getText(), Enom5.getText(), Eapellido5.getText(), Eemail5.getText(), EIBAN5.getText());
         });
         //Boton Borrar
         bnBorrar1.addActionListener(e -> {
-            NID1.setText("");
-            NIBAN_Pago1.setText("");
-            NImport1.setText("");
-            NNSS1.setText("");
-            NIDPla1.setText("");
+            ENSS1.setText("");
+            Enom1.setText("");
+            Eapellido1.setText("");
+            Eemail1.setText("");
+            EIBAN1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
-            NID2.setText("");
-            NIBAN_Pago2.setText("");
-            NImport2.setText("");
-            NNSS2.setText("");
-            NIDPla2.setText("");
+            ENSS2.setText("");
+            Enom2.setText("");
+            Eapellido2.setText("");
+            Eemail2.setText("");
+            EIBAN2.setText("");
         });
         bnBorrar3.addActionListener(e -> {
-            NID3.setText("");
-            NIBAN_Pago3.setText("");
-            NImport3.setText("");
-            NNSS3.setText("");
-            NIDPla3.setText("");
-        });
-        bnBorrar3.addActionListener(e -> {
-            NID3.setText("");
-            NIBAN_Pago3.setText("");
-            NImport3.setText("");
-            NNSS3.setText("");
-            NIDPla3.setText("");
+            ENSS3.setText("");
+            Enom3.setText("");
+            Eapellido3.setText("");
+            Eemail3.setText("");
+            EIBAN3.setText("");
         });
         bnBorrar4.addActionListener(e -> {
-            NID4.setText("");
-            NIBAN_Pago4.setText("");
-            NImport4.setText("");
-            NNSS4.setText("");
-            NIDPla4.setText("");
+            ENSS4.setText("");
+            Enom4.setText("");
+            Eapellido4.setText("");
+            Eemail4.setText("");
+            EIBAN4.setText("");
         });
         bnBorrar5.addActionListener(e -> {
-            NID5.setText("");
-            NIBAN_Pago5.setText("");
-            NImport5.setText("");
-            NNSS5.setText("");
-            NIDPla5.setText("");
+            ENSS5.setText("");
+            Enom5.setText("");
+            Eapellido5.setText("");
+            Eemail5.setText("");
+            EIBAN5.setText("");
         });
+
 
 
         add(panelFlechas, BorderLayout.SOUTH);
         add(panelMain);
-        
         add(panelNavegacion, BorderLayout.NORTH);
         setVisible(true);
-
     }
 }

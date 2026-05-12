@@ -1,13 +1,19 @@
 package es.cide.programacion.Ventana;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.List;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import es.cide.programacion.Main;
 import es.cide.programacion.Logica.TiposDePlazas;
-import es.cide.programacion.*;
 
 public class VentanaTiposDePlazas extends JFrame {
     public VentanaTiposDePlazas() {
@@ -238,48 +244,108 @@ public class VentanaTiposDePlazas extends JFrame {
             String nombre = TPnom1.getText();
             String funcion = TPfuncio1.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+            boolean existe = false;
+            for (TiposDePlazas tiposplazas : lista) {
+                if(tiposplazas.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+            if(existe) {
+                TiposDePlazas.actualizar(nombre, funcion);
+            }else {
+                TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
+            }
         });
         bnGuardar2.addActionListener(e -> {
-            String nombre = TPnom2.getText();
-            String funcion = TPfuncio2.getText();
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+            boolean existe = false;
+            for (TiposDePlazas tiposplazas : lista) {
+                if(tiposplazas.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+            if(existe) {
+                TiposDePlazas.actualizar(nombre, funcion);
+            }else {
+                TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
+            }
         });
         bnGuardar3.addActionListener(e -> {
-            String nombre = TPnom3.getText();
-            String funcion = TPfuncio3.getText();
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+            boolean existe = false;
+            for (TiposDePlazas tiposplazas : lista) {
+                if(tiposplazas.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+            if(existe) {
+                TiposDePlazas.actualizar(nombre, funcion);
+            }else {
+                TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
+            }
         });
         bnGuardar4.addActionListener(e -> {
-            String nombre = TPnom4.getText();
-            String funcion = TPfuncio4.getText();
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+            boolean existe = false;
+            for (TiposDePlazas tiposplazas : lista) {
+                if(tiposplazas.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+            if(existe) {
+                TiposDePlazas.actualizar(nombre, funcion);
+            }else {
+                TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
+            }
         });
         bnGuardar5.addActionListener(e -> {
-            String nombre = TPnom5.getText();
-            String funcion = TPfuncio5.getText();
+            String nombre = TPnom1.getText();
+            String funcion = TPfuncio1.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
+            boolean existe = false;
+            for (TiposDePlazas tiposplazas : lista) {
+                if(tiposplazas.getNombre().equals(nombre)){
+                    existe = true;
+                }
+            }
+            if(existe) {
+                TiposDePlazas.actualizar(nombre, funcion);
+            }else {
+                TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
+            }
         });
 
         // Boton Borrar
         bnBorrar1.addActionListener(e -> {
+            TiposDePlazas.borrar(TPnom1.getText());
             TPfuncio1.setText("");
             TPnom1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
+            TiposDePlazas.borrar(TPnom2.getText());
             TPfuncio2.setText("");
             TPnom2.setText("");
         });
         bnBorrar3.addActionListener(e -> {
+            TiposDePlazas.borrar(TPnom3.getText());
             TPfuncio3.setText("");
             TPnom3.setText("");
         });
         bnBorrar4.addActionListener(e -> {
+            TiposDePlazas.borrar(TPnom4.getText());
             TPfuncio4.setText("");
             TPnom4.setText("");
         });
         bnBorrar5.addActionListener(e -> {
             TPfuncio5.setText("");
             TPnom5.setText("");
+            TiposDePlazas.borrar(TPnom5.getText());
         });
 
         add(panelFlechas, BorderLayout.SOUTH);

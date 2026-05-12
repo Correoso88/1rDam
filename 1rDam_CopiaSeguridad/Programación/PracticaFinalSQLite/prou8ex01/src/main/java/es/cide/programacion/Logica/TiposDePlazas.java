@@ -1,8 +1,11 @@
 package es.cide.programacion.Logica;
 
-import java.awt.Insets;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,5 +56,55 @@ public class TiposDePlazas{
         }
 
         return lista;
+    }
+
+    // Insertar un nuevo tipo de plaza
+    public static void insertarTiposDePlazas(String nombre, String funcion) {
+        String url = "jdbc:sqlite:BaseDatos.db";
+        String sql = "INSERT INTO TIPUS_PLACA (NOM, FUNCIO) VALUES (?, ?)";
+ 
+        try (Connection con = DriverManager.getConnection(url);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+ 
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, funcion);
+            pstmt.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Actualizar tipos deplazas
+    public static void actualizar(String nuevaNombre, String nuevaFuncion) {
+    String url = "jdbc:sqlite:BaseDatos.db";
+    String sql = "UPDATE TIPUS_PLACA SET FUNCIO = ? WHERE NOM = ?";
+
+    try (Connection con = DriverManager.getConnection(url);
+         PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+        pstmt.setString(1, nuevaFuncion);
+        pstmt.setString(2, nuevaNombre);
+        pstmt.executeUpdate();
+
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    }
+}
+
+    // Borrar Tipos de Plazas
+    public static void borrar(String nombre) {
+        String url = "jdbc:sqlite:BaseDatos.db";
+        String sql = "DELETE FROM TIPUS_PLACA WHERE NOM = ?";
+ 
+        try (Connection con = DriverManager.getConnection(url);
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+ 
+            pstmt.setString(1, nombre);
+            pstmt.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

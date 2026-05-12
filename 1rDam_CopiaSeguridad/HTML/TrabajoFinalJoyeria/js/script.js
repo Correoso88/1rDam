@@ -33,16 +33,14 @@ function ValidarContraseña(event) {
 }
 
 function mostrarUsuario() {
-    let Usuario = sessionStorage.getItem("Usuario");
-
-    let ubiUsuario = document.getElementById("usuario");
-
-    if (ubiUsuario && Usuario) {
-        ubiUsuario.innerHTML = `
+  let Usuario = sessionStorage.getItem("Usuario");
+  let ubiUsuario = document.getElementById("usuario");
+  if (ubiUsuario && Usuario) {
+    ubiUsuario.innerHTML = `
             <p>${Usuario}</p>
-            <button onclick="CerrarSesion()">Salir</button>
+            <button onclick="CerrarSesion()"> Salir</button>
         `;
-    }
+  }
 }
 
 window.addEventListener("DOMContentLoaded", mostrarUsuario);
@@ -72,16 +70,16 @@ async function cargarProductos() {
   });
 }
 if (document.getElementById("lista-productos")) {
-    cargarProductos();
+  cargarProductos();
 }
 async function cargarProductosIndex() {
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
   const listaProductosIndice = document.getElementById("lista-productos-index");
-  if (!listaProductosIndice) return;
-  for(let i = 0;i<3;i++){
-      const producto = jsonData.productos[i];
-      listaProductosIndice.innerHTML += `
+
+  for (let i = 0; i < 3; i++) {
+    const producto = jsonData.productos[i];
+    listaProductosIndice.innerHTML += `
         <article class="tarjeta-producto">
             <img src="img/${producto.foto}" alt="${producto.nombre}">
             <h3><a href="detalles.html?id=${i}">${producto.nombre}</a></h3>
@@ -92,64 +90,66 @@ async function cargarProductosIndex() {
   }
 }
 if (document.getElementById("lista-productos-index")) {
-    cargarProductosIndex();
+  cargarProductosIndex();
 }
 
 async function cargarDetalle() {
-  const contenedor = document.getElementById("ficha-producto");
-
-  const id = new URLSearchParams(window.location.search).get("id");
+  const ficha_producto = document.getElementById("ficha-producto");
+  const parms = new URLSearchParams(window.location.search).get("id");
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
   const producto = jsonData.productos[id];
-  contenedor.innerHTML = `
-        <div class="imagen-detalle">
-          <img src="img/${producto.foto}" alt="${producto.nombre}" width="50px">
-        </div>
-        <div>
-          <h1>${producto.nombre}</h1>
-          <p>Categoría: ${producto.categoria}</p>
-          <p>${producto.descripcion}</p>
-          <p>Precio: ${producto.precio}€</p>
-          <button>Añadir a la cesta</button>
-        </div>
-    `;
+  ficha_producto.innerHTML = `
+    <div class="imagen-detalle">
+    <img src="img/${producto.foto}" alt="${producto.nombre}" width="50px">
+      </div>
+      <div>
+      <h1>${producto.nombre}</h1>
+      <p>Categoría: ${producto.categoria}</p>
+      <p>${producto.descripcion}</p>
+      <p>Precio: ${producto.precio}€</p>
+      <button>Añadir a la cesta</button>
+      </div>`;
+
 }
-if (document.getElementById("ficha-producto")) {
-    cargarDetalle()
+if (document.getElementById("ficha-producto")){
+  cargarDetalle()
 }
 
 function añadirCesta(i) {
-  let cesta = JSON.parse(localStorage.getItem("cesta")) || [];
+  let cesta = JSON.parse(localStorage.getItem("cesta"));
   cesta.push(i);
   localStorage.setItem("cesta", JSON.stringify(cesta));
   alert("Producto añadido!");
 }
 
 async function cargarCesta() {
-  const contenedor = document.getElementById("lista-cesta");
-  if (!contenedor) return;
-
-  const cesta = JSON.parse(localStorage.getItem("cesta")) || [];
+  const lista_cesta = document.getElementById("lista-cesta");
+  const cesta = JSON.parse(localStorage.getItem("cesta"));
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
 
-  cesta.forEach((i) => {
+  cesta.forEach(function(i){
     const producto = jsonData.productos[i];
-    contenedor.innerHTML += `
-            <article class="tarjeta-producto">
-                <img src="img/${producto.foto}" alt="${producto.nombre}">
-                <h3>${producto.nombre}</h3>
-                <p class="precio">${producto.precio}€</p>
-                <button onclick="eliminarCesta(${i})">Eliminar</button>
-            </article>
+    lista_cesta.innerHTML += `
+      <article class="tarjeta-producto">
+      <img src="img/${producto.foto}"alt="${producto.nombre}">
+      <h3>${producto.nombre}</h3>
+      <p class="precio">${producto.precio}€</p>
+      <button onclick="eliminarCesta(${i})">Eliminar</button>
+      </article>
         `;
   });
 }
 cargarCesta();
 function eliminarCesta(i) {
-  let cesta = JSON.parse(localStorage.getItem("cesta"))||[];
-  cesta = cesta.filter(item => item !== i);
+  let cesta = JSON.parse(localStorage.getItem("cesta")) || [];
+  for (let j = 0; j < cesta.length; j++) {
+    if (cesta[j] === i) {
+      /*El splice lo qe hace es localizar la posicion actual de la j, quitar la que tenga la misma posicion, y reordena la lista */
+      cesta.splice(j, 1);
+    }
+  }
   localStorage.setItem("cesta", JSON.stringify(cesta));
   location.reload();
 }

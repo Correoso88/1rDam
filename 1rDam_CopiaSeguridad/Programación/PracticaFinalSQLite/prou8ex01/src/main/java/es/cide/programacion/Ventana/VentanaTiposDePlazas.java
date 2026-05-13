@@ -255,10 +255,12 @@ public class VentanaTiposDePlazas extends JFrame {
             }else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
+            dispose();
+            new VentanaTiposDePlazas();
         });
         bnGuardar2.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom2.getText();
+            String funcion = TPfuncio2.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
@@ -271,10 +273,12 @@ public class VentanaTiposDePlazas extends JFrame {
             }else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
+            dispose();
+            new VentanaTiposDePlazas();
         });
         bnGuardar3.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom3.getText();
+            String funcion = TPfuncio3.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
@@ -287,10 +291,12 @@ public class VentanaTiposDePlazas extends JFrame {
             }else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
+            dispose();
+            new VentanaTiposDePlazas();
         });
         bnGuardar4.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom4.getText();
+            String funcion = TPfuncio4.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
@@ -303,13 +309,15 @@ public class VentanaTiposDePlazas extends JFrame {
             }else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
+            dispose();
+            new VentanaTiposDePlazas();
         });
         bnGuardar5.addActionListener(e -> {
-            String nombre = TPnom1.getText();
-            String funcion = TPfuncio1.getText();
+            String nombre = TPnom5.getText();
+            String funcion = TPfuncio5.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
-            for (TiposDePlazas tiposplazas : lista) {
+            for(TiposDePlazas tiposplazas : lista) {
                 if(tiposplazas.getNombre().equals(nombre)){
                     existe = true;
                 }
@@ -319,6 +327,8 @@ public class VentanaTiposDePlazas extends JFrame {
             }else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
+            dispose();
+            new VentanaTiposDePlazas();
         });
 
         // Boton Borrar

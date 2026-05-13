@@ -52,7 +52,6 @@ function CerrarSesion() {
   location.reload();
 }
 
-let jsonData;
 async function cargarProductos() {
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
@@ -95,7 +94,7 @@ if (document.getElementById("lista-productos-index")) {
 
 async function cargarDetalle() {
   const ficha_producto = document.getElementById("ficha-producto");
-  const parms = new URLSearchParams(window.location.search).get("id");
+  const id = new URLSearchParams(window.location.search).get("id");
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
   const producto = jsonData.productos[id];
@@ -127,7 +126,7 @@ async function cargarCesta() {
   const lista_cesta = document.getElementById("lista-cesta");
   const cesta = JSON.parse(localStorage.getItem("cesta"));
   const response = await fetch("Datos/datosProducto.json");
-  const jsonData = await response.json();
+   const jsonData = await response.json();
 
   cesta.forEach(function(i){
     const producto = jsonData.productos[i];

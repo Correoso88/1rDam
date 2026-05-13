@@ -17,6 +17,7 @@ public class TiposDePlazas{
         this.nombre = nombre;
         this.funcion = funcion;
     }
+
     //Getters
     public String getNombre() {
         return nombre;
@@ -25,6 +26,7 @@ public class TiposDePlazas{
     public String getFuncion() {
         return funcion;
     }
+
     //Setters
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -78,15 +80,14 @@ public class TiposDePlazas{
     // Actualizar tipos deplazas
     public static void actualizar(String nuevaNombre, String nuevaFuncion) {
     String url = "jdbc:sqlite:BaseDatos.db";
-    String sql = "UPDATE TIPUS_PLACA SET FUNCIO = ? WHERE NOM = ?";
+    String sql = "UPDATE TIPUS_PLACA SET NOM = ?, FUNCIO = ? WHERE NOM = ?";
 
     try (Connection con = DriverManager.getConnection(url);
-         PreparedStatement pstmt = con.prepareStatement(sql)) {
+        PreparedStatement pstmtnom = con.prepareStatement(sql);) {
 
-        pstmt.setString(1, nuevaFuncion);
-        pstmt.setString(2, nuevaNombre);
-        pstmt.executeUpdate();
-
+        //Cambiar el nombre
+        pstmtnom.setString(0, nuevaFuncion);
+        pstmtnom.executeUpdate();
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     }
@@ -95,13 +96,18 @@ public class TiposDePlazas{
     // Borrar Tipos de Plazas
     public static void borrar(String nombre) {
         String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "DELETE FROM TIPUS_PLACA WHERE NOM = ?";
+        String sqlnom = "DELETE FROM TIPUS_PLACA WHERE NOM = ? AND WHERE ";
+        String sqlfunction = "DELETE FROM TIPUS_PLACA WHERE FUNCIO = ? AND WHERE ";
  
         try (Connection con = DriverManager.getConnection(url);
-             PreparedStatement pstmt = con.prepareStatement(sql)) {
- 
-            pstmt.setString(1, nombre);
-            pstmt.executeUpdate();
+             PreparedStatement pstmtnom = con.prepareStatement(sqlnom);
+            PreparedStatement pstmtfuncion = con.prepareStatement(sqlfunction)) {
+            //Elimino el nombre
+            pstmtnom.setString(1, nombre);
+            pstmtnom.executeUpdate();
+
+            //Elimino la funcion
+            pstmtfuncion.setString(0, sqlfunction);
  
         } catch (SQLException e) {
             System.out.println(e.getMessage());

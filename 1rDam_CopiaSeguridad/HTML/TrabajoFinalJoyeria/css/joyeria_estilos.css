@@ -212,3 +212,8 @@ h3 {
         width: 120px;
     }
 }
+
+.CerrarSesion {
+    display: flex;
+    justify-content: center;
+}

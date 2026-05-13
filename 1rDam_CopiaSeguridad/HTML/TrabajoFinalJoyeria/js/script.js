@@ -81,7 +81,8 @@ if (document.getElementById("lista-productos-index")) {
 
 async function cargarDetalle() {
   const ficha_producto = document.getElementById("ficha-producto");
-  const id = new URLSearchParams(window.location.search).get("id");
+  const parmsURL = new URLSearchParams(window.location.search);
+  id = parmsURL.get("id");
   const response = await fetch("Datos/datosProducto.json");
   const jsonData = await response.json();
   const producto = jsonData.productos[id];
@@ -91,7 +92,7 @@ async function cargarDetalle() {
       </div>
       <div>
       <h1>${producto.nombre}</h1>
-      <p>Categoría: ${producto.categoria}</p>
+      <p>Categoria: ${producto.categoria}</p>
       <p>${producto.descripcion}</p>
       <p>Precio: ${producto.precio}€</p>
       <button>Añadir a la cesta</button>

@@ -32,19 +32,6 @@ function ValidarContraseña(event) {
   }
 }
 
-function mostrarUsuario() {
-  let Usuario = sessionStorage.getItem("Usuario");
-  let ubiUsuario = document.getElementById("usuario");
-  if (ubiUsuario && Usuario) {
-    ubiUsuario.innerHTML = `
-            <p>${Usuario}</p>
-            <button onclick="CerrarSesion()"> Salir</button>
-        `;
-  }
-}
-
-window.addEventListener("DOMContentLoaded", mostrarUsuario);
-
 function CerrarSesion() {
   let usuario = sessionStorage.getItem("Usuario");
   alert("Adiós " + usuario);

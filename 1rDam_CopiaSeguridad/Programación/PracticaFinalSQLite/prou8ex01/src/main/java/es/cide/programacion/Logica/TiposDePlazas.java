@@ -78,36 +78,32 @@ public class TiposDePlazas{
     }
 
     // Actualizar tipos deplazas
-    public static void actualizar(String nuevaNombre, String nuevaFuncion) {
+    public static void actualizarTiposDePlaza(String nuevaNombre) {
     String url = "jdbc:sqlite:BaseDatos.db";
-    String sql = "UPDATE TIPUS_PLACA SET NOM = ?, FUNCIO = ? WHERE NOM = ?";
+    String sqlnom = "UPDATE TIPUS_PLACA SET FUNCIO = ? WHERE NOM = ?";
 
     try (Connection con = DriverManager.getConnection(url);
-        PreparedStatement pstmtnom = con.prepareStatement(sql);) {
+        PreparedStatement pstmtnom = con.prepareStatement(sqlnom);) {
 
         //Cambiar el nombre
-        pstmtnom.setString(0, nuevaFuncion);
+        pstmtnom.setString(0, nuevaNombre);
         pstmtnom.executeUpdate();
+
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     }
 }
 
     // Borrar Tipos de Plazas
-    public static void borrar(String nombre) {
+    public static void borrarTiposDePlaza(String nombre) {
         String url = "jdbc:sqlite:BaseDatos.db";
-        String sqlnom = "DELETE FROM TIPUS_PLACA WHERE NOM = ? AND WHERE ";
-        String sqlfunction = "DELETE FROM TIPUS_PLACA WHERE FUNCIO = ? AND WHERE ";
+        String sql = "DELETE FROM TIPUS_PLACA WHERE NOM = ?";
  
         try (Connection con = DriverManager.getConnection(url);
-             PreparedStatement pstmtnom = con.prepareStatement(sqlnom);
-            PreparedStatement pstmtfuncion = con.prepareStatement(sqlfunction)) {
+             PreparedStatement pstmt = con.prepareStatement(sql);) {
             //Elimino el nombre
-            pstmtnom.setString(1, nombre);
-            pstmtnom.executeUpdate();
-
-            //Elimino la funcion
-            pstmtfuncion.setString(0, sqlfunction);
+            pstmt.setString(0, nombre);
+            pstmt.executeUpdate();
  
         } catch (SQLException e) {
             System.out.println(e.getMessage());

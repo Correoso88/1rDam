@@ -111,8 +111,9 @@ public class Empleados {
         }
     }
 
+
     // Borrar Tipos de Plazas
-    public static void borrar(String nombre) {
+    public static void borrarEmpleados(String nom, String apellido, String email, String iban) {
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "DELETE FROM TIPUS_PLACA WHERE NOM = ? AND WHERE ";
 

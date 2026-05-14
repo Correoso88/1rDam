@@ -246,13 +246,13 @@ public class VentanaTiposDePlazas extends JFrame {
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
-                if(tiposplazas.getNombre().equals(nombre)){
+                if (tiposplazas.getNombre().equals(nombre)) {
                     existe = true;
                 }
             }
-            if(existe) {
-                TiposDePlazas.actualizar(nombre, funcion);
-            }else {
+            if (existe) {
+                TiposDePlazas.actualizarTiposDePlaza(nombre);
+            } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
             dispose();
@@ -264,13 +264,13 @@ public class VentanaTiposDePlazas extends JFrame {
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
-                if(tiposplazas.getNombre().equals(nombre)){
+                if (tiposplazas.getNombre().equals(nombre)) {
                     existe = true;
                 }
             }
-            if(existe) {
-                TiposDePlazas.actualizar(nombre, funcion);
-            }else {
+            if (existe) {
+                TiposDePlazas.actualizarTiposDePlaza(nombre);
+            } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
             dispose();
@@ -282,13 +282,13 @@ public class VentanaTiposDePlazas extends JFrame {
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
-                if(tiposplazas.getNombre().equals(nombre)){
+                if (tiposplazas.getNombre().equals(nombre)) {
                     existe = true;
                 }
             }
-            if(existe) {
-                TiposDePlazas.actualizar(nombre, funcion);
-            }else {
+            if (existe) {
+                TiposDePlazas.actualizarTiposDePlaza(nombre);
+            } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
             dispose();
@@ -300,13 +300,13 @@ public class VentanaTiposDePlazas extends JFrame {
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
             for (TiposDePlazas tiposplazas : lista) {
-                if(tiposplazas.getNombre().equals(nombre)){
+                if (tiposplazas.getNombre().equals(nombre)) {
                     existe = true;
                 }
             }
-            if(existe) {
-                TiposDePlazas.actualizar(nombre, funcion);
-            }else {
+            if (existe) {
+                TiposDePlazas.actualizarTiposDePlaza(nombre);
+            } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
             dispose();
@@ -317,14 +317,14 @@ public class VentanaTiposDePlazas extends JFrame {
             String funcion = TPfuncio5.getText();
             List<TiposDePlazas> lista = TiposDePlazas.obtenerTiposDePlazas();
             boolean existe = false;
-            for(TiposDePlazas tiposplazas : lista) {
-                if(tiposplazas.getNombre().equals(nombre)){
+            for (TiposDePlazas tiposplazas : lista) {
+                if (tiposplazas.getNombre().equals(nombre)) {
                     existe = true;
                 }
             }
-            if(existe) {
-                TiposDePlazas.actualizar(nombre, funcion);
-            }else {
+            if (existe) {
+                TiposDePlazas.actualizarTiposDePlaza(nombre);
+            } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
             dispose();
@@ -333,29 +333,24 @@ public class VentanaTiposDePlazas extends JFrame {
 
         // Boton Borrar
         bnBorrar1.addActionListener(e -> {
-            TiposDePlazas.borrar(TPnom1.getText());
+            TiposDePlazas.borrarTiposDePlaza(TPnom1.getText());
             TPfuncio1.setText("");
-            TPnom1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
-            TiposDePlazas.borrar(TPnom2.getText());
+            TiposDePlazas.borrarTiposDePlaza(TPnom2.getText());
             TPfuncio2.setText("");
-            TPnom2.setText("");
         });
         bnBorrar3.addActionListener(e -> {
-            TiposDePlazas.borrar(TPnom3.getText());
+            TiposDePlazas.borrarTiposDePlaza(TPnom3.getText());
             TPfuncio3.setText("");
-            TPnom3.setText("");
         });
         bnBorrar4.addActionListener(e -> {
-            TiposDePlazas.borrar(TPnom4.getText());
+            TiposDePlazas.borrarTiposDePlaza(TPnom4.getText());
             TPfuncio4.setText("");
-            TPnom4.setText("");
         });
         bnBorrar5.addActionListener(e -> {
             TPfuncio5.setText("");
-            TPnom5.setText("");
-            TiposDePlazas.borrar(TPnom5.getText());
+            TiposDePlazas.borrarTiposDePlaza(TPnom5.getText());
         });
 
         add(panelFlechas, BorderLayout.SOUTH);

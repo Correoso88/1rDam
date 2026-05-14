@@ -130,7 +130,7 @@ async function cargarCesta() {
 }
 cargarCesta();
 function eliminarCesta(i) {
-  let cesta = JSON.parse(localStorage.getItem("cesta")) || [];
+  let cesta = JSON.parse(localStorage.getItem("cesta"));
   for (let j = 0; j < cesta.length; j++) {
     if (cesta[j] === i) {
       /*El splice lo qe hace es localizar la posicion actual de la j, quitar la que tenga la misma posicion, y reordena la lista */

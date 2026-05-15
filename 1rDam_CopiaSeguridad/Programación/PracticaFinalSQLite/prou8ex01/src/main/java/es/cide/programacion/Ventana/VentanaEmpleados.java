@@ -1,12 +1,21 @@
 package es.cide.programacion.Ventana;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.util.List;
 
-import es.cide.programacion.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import es.cide.programacion.Logica.Empleados;
 
-public class VentanaEmpleados extends JFrame{
+public class VentanaEmpleados extends JFrame {
     public VentanaEmpleados() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,19 +51,19 @@ public class VentanaEmpleados extends JFrame{
         gbc.gridy = 0;
         JButton bnNominas = new JButton("Nominas");
         panelNavegacion.add(bnNominas, gbc);
-        
-        //Action Listeners
-        //Boton Plazas
+
+        // Action Listeners
+        // Boton Plazas
         bnPlazas.addActionListener(e -> {
             new VentanaPlazas();
             dispose();
         });
-        //Boton TiposDePlazas
+        // Boton TiposDePlazas
         bnTPlazas.addActionListener(e -> {
             new VentanaTiposDePlazas();
             dispose();
         });
-        //Boton Nomina
+        // Boton Nomina
         bnNominas.addActionListener(e -> {
             new VentanaNominas();
             dispose();
@@ -67,55 +76,54 @@ public class VentanaEmpleados extends JFrame{
         gbcP.weightx = 1.0;
         gbcP.weighty = 1.0;
         gbcP.fill = GridBagConstraints.BOTH;
-        
-        //Titulo
+
+        // Titulo
         gbcP.gridx = 0;
         gbcP.gridy = 0;
         gbcP.gridwidth = 9;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Empleados"),gbcP);
+        panelMain.add(new JLabel("Empleados"), gbcP);
 
-        //Jlabels
+        // Jlabels
         gbcP.gridx = 0;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("NSS"),gbcP);
+        panelMain.add(new JLabel("NSS"), gbcP);
 
         gbcP.gridx = 1;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Nombre"),gbcP);
+        panelMain.add(new JLabel("Nombre"), gbcP);
 
         gbcP.gridx = 2;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Apellidos"),gbcP);
+        panelMain.add(new JLabel("Apellidos"), gbcP);
 
         gbcP.gridx = 3;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Email"),gbcP);
+        panelMain.add(new JLabel("Email"), gbcP);
 
         gbcP.gridx = 4;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("IBAN"),gbcP);
+        panelMain.add(new JLabel("IBAN"), gbcP);
 
-        //Boton añadir
+        // Boton añadir
         gbcP.gridx = 5;
         gbcP.gridy = 1;
         gbcP.gridwidth = 2;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnAñadir = new JButton("Añadir");
-        panelMain.add(bnAñadir,gbcP);
+        panelMain.add(bnAñadir, gbcP);
 
-
-        //PRIMERA FILA
+        // PRIMERA FILA
         // Textfield NSS 1
         gbcP.gridx = 0;
         gbcP.gridy = 2;
@@ -166,14 +174,14 @@ public class VentanaEmpleados extends JFrame{
         panelMain.add(bnGuardar1, gbcP);
 
         // Boton Borrar 1
-        gbcP.gridx =6;
+        gbcP.gridx = 6;
         gbcP.gridy = 2;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar1 = new JButton("Borrar");
         panelMain.add(bnBorrar1, gbcP);
 
-        //SEGUNDA FILA
+        // SEGUNDA FILA
         // Textfield NSS 2
         gbcP.gridx = 0;
         gbcP.gridy = 3;
@@ -230,7 +238,7 @@ public class VentanaEmpleados extends JFrame{
         JButton bnBorrar2 = new JButton("Borrar");
         panelMain.add(bnBorrar2, gbcP);
 
-        //Tercera Fila
+        // Tercera Fila
         // Textfield NSS 3
         gbcP.gridx = 0;
         gbcP.gridy = 4;
@@ -287,7 +295,7 @@ public class VentanaEmpleados extends JFrame{
         JButton bnBorrar3 = new JButton("Borrar");
         panelMain.add(bnBorrar3, gbcP);
 
-        //QUARTA FILA
+        // QUARTA FILA
         // Textfield NSS 4
         gbcP.gridx = 0;
         gbcP.gridy = 5;
@@ -344,7 +352,7 @@ public class VentanaEmpleados extends JFrame{
         JButton bnBorrar4 = new JButton("Borrar");
         panelMain.add(bnBorrar4, gbcP);
 
-        //QUINTA FILA
+        // QUINTA FILA
         // Textfield NSS 5
         gbcP.gridx = 0;
         gbcP.gridy = 6;
@@ -409,40 +417,131 @@ public class VentanaEmpleados extends JFrame{
         gbc2.weighty = 0;
         gbc2.fill = GridBagConstraints.BOTH;
 
-        //Botones << >>
+        // Botones << >>
         gbc2.gridx = 0;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnizq = new JButton("<<");
-        panelFlechas.add(bnizq, gbc2);       
+        panelFlechas.add(bnizq, gbc2);
 
         gbc2.gridx = 1;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnder = new JButton(">>");
-        panelFlechas.add(bnder, gbc2);       
-        
-        //Action Listeners
-        //Boton Guardar
+        panelFlechas.add(bnder, gbc2);
+
+        // Action Listeners
+        // Boton Guardar
         bnGuardar1.addActionListener(e -> {
-            Main.insertarEmpleados(ENSS1.getText(), Enom1.getText(), Eapellido1.getText(), Eemail1.getText(), EIBAN1.getText());
+            int nss = Integer.parseInt(ENSS1.getText());
+            String nombre = Enom1.getText();
+            String apellido = Eapellido1.getText();
+            String email = Eemail1.getText();
+            String iban = EIBAN1.getText();
+            List<Empleados> lista = Empleados.obtenerEmpleados();
+            boolean existe = false;
+            for (Empleados empleado : lista) {
+                if (empleado.getNss() == (nss)) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Empleados.actualizarEmpleados(nss, nombre, apellido, email, iban);
+            } else {
+                Empleados.insertarEmpleado(nss, nombre, apellido, email, iban);
+            }
+            dispose();
+            new VentanaEmpleados();
         });
         bnGuardar2.addActionListener(e -> {
-            Main.insertarEmpleados(ENSS2.getText(), Enom2.getText(), Eapellido2.getText(), Eemail2.getText(), EIBAN2.getText());
+            int nss = Integer.parseInt(ENSS2.getText());
+            String nombre = Enom2.getText();
+            String apellido = Eapellido2.getText();
+            String email = Eemail2.getText();
+            String iban = EIBAN2.getText();
+            List<Empleados> lista = Empleados.obtenerEmpleados();
+            boolean existe = false;
+            for (Empleados empleado : lista) {
+                if (empleado.getNss() == (nss)) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Empleados.actualizarEmpleados(nss, nombre, apellido, email, iban);
+            } else {
+                Empleados.insertarEmpleado(nss, nombre, apellido, email, iban);
+            }
+            dispose();
+            new VentanaEmpleados();
         });
         bnGuardar3.addActionListener(e -> {
-            Main.insertarEmpleados(ENSS3.getText(), Enom3.getText(), Eapellido3.getText(), Eemail3.getText(), EIBAN3.getText());
+            int nss = Integer.parseInt(ENSS3.getText());
+            String nombre = Enom3.getText();
+            String apellido = Eapellido3.getText();
+            String email = Eemail3.getText();
+            String iban = EIBAN3.getText();
+            List<Empleados> lista = Empleados.obtenerEmpleados();
+            boolean existe = false;
+            for (Empleados empleado : lista) {
+                if (empleado.getNss() == (nss)) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Empleados.actualizarEmpleados(nss, nombre, apellido, email, iban);
+            } else {
+                Empleados.insertarEmpleado(nss, nombre, apellido, email, iban);
+            }
+            dispose();
+            new VentanaEmpleados();
         });
         bnGuardar4.addActionListener(e -> {
-            Main.insertarEmpleados(ENSS4.getText(), Enom4.getText(), Eapellido4.getText(), Eemail4.getText(), EIBAN4.getText());
+            int nss = Integer.parseInt(ENSS4.getText());
+            String nombre = Enom4.getText();
+            String apellido = Eapellido4.getText();
+            String email = Eemail4.getText();
+            String iban = EIBAN4.getText();
+            List<Empleados> lista = Empleados.obtenerEmpleados();
+            boolean existe = false;
+            for (Empleados empleado : lista) {
+                if (empleado.getNss() == (nss)) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Empleados.actualizarEmpleados(nss, nombre, apellido, email, iban);
+            } else {
+                Empleados.insertarEmpleado(nss, nombre, apellido, email, iban);
+            }
+            dispose();
+            new VentanaEmpleados();
         });
         bnGuardar5.addActionListener(e -> {
-            Main.insertarEmpleados(ENSS5.getText(), Enom5.getText(), Eapellido5.getText(), Eemail5.getText(), EIBAN5.getText());
+            int nss = Integer.parseInt(ENSS5.getText());
+            String nombre = Enom5.getText();
+            String apellido = Eapellido5.getText();
+            String email = Eemail5.getText();
+            String iban = EIBAN5.getText();
+            List<Empleados> lista = Empleados.obtenerEmpleados();
+            boolean existe = false;
+            for (Empleados empleado : lista) {
+                if (empleado.getNss() == (nss)) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Empleados.actualizarEmpleados(nss, nombre, apellido, email, iban);
+            } else {
+                Empleados.insertarEmpleado(nss, nombre, apellido, email, iban);
+            }
+            dispose();
+            new VentanaEmpleados();
         });
-        //Boton Borrar
+        // Botones Borrar
         bnBorrar1.addActionListener(e -> {
+            Empleados.borrarEmpleados(ENSS1.getText());
             ENSS1.setText("");
             Enom1.setText("");
             Eapellido1.setText("");
@@ -450,6 +549,7 @@ public class VentanaEmpleados extends JFrame{
             EIBAN1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
+            Empleados.borrarEmpleados(ENSS2.getText());
             ENSS2.setText("");
             Enom2.setText("");
             Eapellido2.setText("");
@@ -457,6 +557,7 @@ public class VentanaEmpleados extends JFrame{
             EIBAN2.setText("");
         });
         bnBorrar3.addActionListener(e -> {
+            Empleados.borrarEmpleados(ENSS3.getText());
             ENSS3.setText("");
             Enom3.setText("");
             Eapellido3.setText("");
@@ -464,6 +565,7 @@ public class VentanaEmpleados extends JFrame{
             EIBAN3.setText("");
         });
         bnBorrar4.addActionListener(e -> {
+            Empleados.borrarEmpleados(ENSS4.getText());
             ENSS4.setText("");
             Enom4.setText("");
             Eapellido4.setText("");
@@ -471,6 +573,7 @@ public class VentanaEmpleados extends JFrame{
             EIBAN4.setText("");
         });
         bnBorrar5.addActionListener(e -> {
+            Empleados.borrarEmpleados(ENSS5.getText());
             ENSS5.setText("");
             Enom5.setText("");
             Eapellido5.setText("");
@@ -478,11 +581,46 @@ public class VentanaEmpleados extends JFrame{
             EIBAN5.setText("");
         });
 
-
-
         add(panelFlechas, BorderLayout.SOUTH);
         add(panelMain);
         add(panelNavegacion, BorderLayout.NORTH);
         setVisible(true);
+
+        List<Empleados> lista = Empleados.obtenerEmpleados();
+        if (lista.size() > 0) {
+            ENSS1.setText(String.valueOf(lista.get(0).getNss()));
+            Enom1.setText(lista.get(0).getNombre());
+            Eapellido1.setText(lista.get(0).getApellido());
+            Eemail1.setText(lista.get(0).getEmail());
+            EIBAN1.setText(lista.get(0).getIban());
+        }
+        if (lista.size() > 1) {
+            ENSS2.setText(String.valueOf(lista.get(1).getNss()));
+            Enom2.setText(lista.get(1).getNombre());
+            Eapellido2.setText(lista.get(1).getApellido());
+            Eemail2.setText(lista.get(1).getEmail());
+            EIBAN2.setText(lista.get(1).getIban());
+        }
+        if (lista.size() > 2) {
+            ENSS3.setText(String.valueOf(lista.get(2).getNss()));
+            Enom3.setText(lista.get(2).getNombre());
+            Eapellido3.setText(lista.get(2).getApellido());
+            Eemail3.setText(lista.get(2).getEmail());
+            EIBAN3.setText(lista.get(2).getIban());
+        }
+        if (lista.size() > 3) {
+            ENSS4.setText(String.valueOf(lista.get(3).getNss()));
+            Enom4.setText(lista.get(3).getNombre());
+            Eapellido4.setText(lista.get(3).getApellido());
+            Eemail4.setText(lista.get(3).getEmail());
+            EIBAN4.setText(lista.get(3).getIban());
+        }
+        if (lista.size() > 4) {
+            ENSS5.setText(String.valueOf(lista.get(4).getNss()));
+            Enom5.setText(lista.get(4).getNombre());
+            Eapellido5.setText(lista.get(4).getApellido());
+            Eemail5.setText(lista.get(4).getEmail());
+            EIBAN5.setText(lista.get(4).getIban());
+        }
     }
 }

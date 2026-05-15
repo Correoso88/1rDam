@@ -1,13 +1,7 @@
 package es.cide.programacion.Logica;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
 public class TiposDePlazas{
     private String nombre;
@@ -37,7 +31,6 @@ public class TiposDePlazas{
     }
 
     public static List<TiposDePlazas> obtenerTiposDePlazas() {
-
         List<TiposDePlazas> lista = new ArrayList<>();
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "SELECT * FROM TIPUS_PLACA";
@@ -60,7 +53,7 @@ public class TiposDePlazas{
         return lista;
     }
 
-    // Insertar un nuevo tipo de plaza
+    // Insertar Tipo de plaza
     public static void insertarTiposDePlazas(String nombre, String funcion) {
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "INSERT INTO TIPUS_PLACA (NOM, FUNCIO) VALUES (?, ?)";
@@ -78,16 +71,17 @@ public class TiposDePlazas{
     }
 
     // Actualizar tipos deplazas
-    public static void actualizarTiposDePlaza(String nuevaNombre) {
+    public static void actualizarTiposDePlaza(String nombre, String nuevaFuncion) {
     String url = "jdbc:sqlite:BaseDatos.db";
     String sqlnom = "UPDATE TIPUS_PLACA SET FUNCIO = ? WHERE NOM = ?";
 
     try (Connection con = DriverManager.getConnection(url);
-        PreparedStatement pstmtnom = con.prepareStatement(sqlnom);) {
+        PreparedStatement pstmt = con.prepareStatement(sqlnom);) {
 
         //Cambiar el nombre
-        pstmtnom.setString(0, nuevaNombre);
-        pstmtnom.executeUpdate();
+        pstmt.setString(1, nuevaFuncion);
+        pstmt.setString(2, nombre);
+        pstmt.executeUpdate();
 
     } catch (SQLException e) {
         System.out.println(e.getMessage());
@@ -102,7 +96,7 @@ public class TiposDePlazas{
         try (Connection con = DriverManager.getConnection(url);
              PreparedStatement pstmt = con.prepareStatement(sql);) {
             //Elimino el nombre
-            pstmt.setString(0, nombre);
+            pstmt.setString(1, nombre);
             pstmt.executeUpdate();
  
         } catch (SQLException e) {

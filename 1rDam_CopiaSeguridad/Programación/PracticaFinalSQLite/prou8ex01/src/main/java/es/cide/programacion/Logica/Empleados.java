@@ -1,13 +1,7 @@
 package es.cide.programacion.Logica;
+import java.sql.*;
+import java.util.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Empleados {
     private int nss;
@@ -70,7 +64,7 @@ public class Empleados {
     public static List<Empleados> obtenerEmpleados() {
         String url = "jdbc:sqlite:BaseDatos.db";
         String sql = "SELECT * FROM EMPLEADOS";
-        java.util.List<Empleados> lista = new java.util.ArrayList<>();
+        java.util.List<Empleados> lista = new ArrayList<>();
 
         try (Connection con = DriverManager.getConnection(url);
                 java.sql.Statement stmt = con.createStatement();
@@ -111,16 +105,36 @@ public class Empleados {
         }
     }
 
-
-    // Borrar Tipos de Plazas
-    public static void borrarEmpleados(String nom, String apellido, String email, String iban) {
+    // Borrar Empleados
+    public static void borrarEmpleados(String nss) {
         String url = "jdbc:sqlite:BaseDatos.db";
-        String sql = "DELETE FROM TIPUS_PLACA WHERE NOM = ? AND WHERE ";
+        String sql = "DELETE FROM EMPLEADOS WHERE NSS = ?";
 
         try (Connection con = DriverManager.getConnection(url);
                 PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-            pstmt.setString(1, nombre);
+            pstmt.setString(1, nss);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    // Actualizar Empleados
+    public static void actualizarEmpleados(int nss, String nuevoNombre, String nuevoApellido, String nuevoEmail, String nuevoiban) {
+        String url = "jdbc:sqlite:BaseDatos.db";
+        String sql = "UPDATE EMPLEADOS SET NOM = ?, LLINATGES = ?, EMAIL = ?, IBAN = ? WHERE NSS = ?";
+
+        try (Connection con = DriverManager.getConnection(url);
+                PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+            // Cambiar el nombre
+            pstmt.setString(1, nuevoNombre);
+            pstmt.setString(2, nuevoApellido);
+            pstmt.setString(3, nuevoEmail);
+            pstmt.setString(4, nuevoiban);
+            pstmt.setInt(5, nss);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

@@ -251,7 +251,7 @@ public class VentanaTiposDePlazas extends JFrame {
                 }
             }
             if (existe) {
-                TiposDePlazas.actualizarTiposDePlaza(nombre);
+                TiposDePlazas.actualizarTiposDePlaza(nombre, funcion);
             } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
@@ -269,7 +269,7 @@ public class VentanaTiposDePlazas extends JFrame {
                 }
             }
             if (existe) {
-                TiposDePlazas.actualizarTiposDePlaza(nombre);
+                TiposDePlazas.actualizarTiposDePlaza(nombre, funcion);
             } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
@@ -287,7 +287,7 @@ public class VentanaTiposDePlazas extends JFrame {
                 }
             }
             if (existe) {
-                TiposDePlazas.actualizarTiposDePlaza(nombre);
+                TiposDePlazas.actualizarTiposDePlaza(nombre, funcion);
             } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
@@ -305,7 +305,7 @@ public class VentanaTiposDePlazas extends JFrame {
                 }
             }
             if (existe) {
-                TiposDePlazas.actualizarTiposDePlaza(nombre);
+                TiposDePlazas.actualizarTiposDePlaza(nombre, funcion);
             } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
@@ -323,7 +323,7 @@ public class VentanaTiposDePlazas extends JFrame {
                 }
             }
             if (existe) {
-                TiposDePlazas.actualizarTiposDePlaza(nombre);
+                TiposDePlazas.actualizarTiposDePlaza(nombre, funcion);
             } else {
                 TiposDePlazas.insertarTiposDePlazas(nombre, funcion);
             }
@@ -335,22 +335,27 @@ public class VentanaTiposDePlazas extends JFrame {
         bnBorrar1.addActionListener(e -> {
             TiposDePlazas.borrarTiposDePlaza(TPnom1.getText());
             TPfuncio1.setText("");
+            TPnom1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
             TiposDePlazas.borrarTiposDePlaza(TPnom2.getText());
             TPfuncio2.setText("");
+            TPnom1.setText("");
         });
         bnBorrar3.addActionListener(e -> {
             TiposDePlazas.borrarTiposDePlaza(TPnom3.getText());
             TPfuncio3.setText("");
+            TPnom1.setText("");
         });
         bnBorrar4.addActionListener(e -> {
             TiposDePlazas.borrarTiposDePlaza(TPnom4.getText());
             TPfuncio4.setText("");
+            TPnom1.setText("");
         });
         bnBorrar5.addActionListener(e -> {
             TPfuncio5.setText("");
             TiposDePlazas.borrarTiposDePlaza(TPnom5.getText());
+            TPnom1.setText("");
         });
 
         add(panelFlechas, BorderLayout.SOUTH);
@@ -382,6 +387,5 @@ public class VentanaTiposDePlazas extends JFrame {
             TPnom5.setText(lista.get(4).getNombre());
             TPfuncio5.setText(lista.get(4).getFuncion());
         }
-
     }
 }

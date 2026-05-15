@@ -2,10 +2,12 @@ package es.cide.programacion.Ventana;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 import es.cide.programacion.*;
+import es.cide.programacion.Logica.Plazas;
 
-public class VentanaPlazas extends JFrame{
+public class VentanaPlazas extends JFrame {
     public VentanaPlazas() {
         setSize(1250, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,18 +45,18 @@ public class VentanaPlazas extends JFrame{
         panelNavegacion.add(bnNominas, gbc);
         add(panelNavegacion, BorderLayout.NORTH);
 
-        //Action Listeners
-        //Boton Tipos de Plazas
+        // Action Listeners
+        // Boton Tipos de Plazas
         bnTPlazas.addActionListener(e -> {
             new VentanaTiposDePlazas();
             dispose();
         });
-        //Boton Empleados
+        // Boton Empleados
         bnEmpleados.addActionListener(e -> {
             new VentanaEmpleados();
             dispose();
         });
-        //Boton Nomina
+        // Boton Nomina
         bnNominas.addActionListener(e -> {
             new VentanaNominas();
             dispose();
@@ -67,61 +69,60 @@ public class VentanaPlazas extends JFrame{
         gbcP.weightx = 1.0;
         gbcP.weighty = 1.0;
         gbcP.fill = GridBagConstraints.BOTH;
-        
-        //Titulo
+
+        // Titulo
         gbcP.gridx = 0;
         gbcP.gridy = 0;
         gbcP.gridwidth = 9;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Plazas"),gbcP);
+        panelMain.add(new JLabel("Plazas"), gbcP);
 
-        //Jlabels
+        // Jlabels
         gbcP.gridx = 0;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Codigo"),gbcP);
+        panelMain.add(new JLabel("Codigo"), gbcP);
 
         gbcP.gridx = 1;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Nombre"),gbcP);
+        panelMain.add(new JLabel("Nombre"), gbcP);
 
         gbcP.gridx = 2;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Salari"),gbcP);
+        panelMain.add(new JLabel("Salari"), gbcP);
 
         gbcP.gridx = 3;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Plaça Supervisora"),gbcP);
+        panelMain.add(new JLabel("Plaça Supervisora"), gbcP);
 
         gbcP.gridx = 4;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Informe Supervision "),gbcP);
+        panelMain.add(new JLabel("Informe Supervision "), gbcP);
 
         gbcP.gridx = 5;
         gbcP.gridy = 1;
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.CENTER;
-        panelMain.add(new JLabel("Tipo de Plaza"),gbcP);
+        panelMain.add(new JLabel("Tipo de Plaza"), gbcP);
 
-        //Boton añadir
+        // Boton añadir
         gbcP.gridx = 6;
         gbcP.gridy = 1;
         gbcP.gridwidth = 3;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnAñadir = new JButton("Añadir");
-        panelMain.add(bnAñadir,gbcP);
+        panelMain.add(bnAñadir, gbcP);
 
-
-        //PRIMERA FILA
+        // PRIMERA FILA
         // Textfield Codigo 1
         gbcP.gridx = 0;
         gbcP.gridy = 2;
@@ -187,7 +188,7 @@ public class VentanaPlazas extends JFrame{
         JButton bnBorrar1 = new JButton("Borrar");
         panelMain.add(bnBorrar1, gbcP);
 
-        //SEGUNDA FILA
+        // SEGUNDA FILA
         // Textfield Codigo 2
         gbcP.gridx = 0;
         gbcP.gridy = 3;
@@ -252,7 +253,7 @@ public class VentanaPlazas extends JFrame{
         JButton bnBorrar2 = new JButton("Borrar");
         panelMain.add(bnBorrar2, gbcP);
 
-        //Tercera Fila
+        // Tercera Fila
         // Textfield Codigo 3
         gbcP.gridx = 0;
         gbcP.gridy = 4;
@@ -317,7 +318,7 @@ public class VentanaPlazas extends JFrame{
         JButton bnBorrar3 = new JButton("Borrar");
         panelMain.add(bnBorrar3, gbcP);
 
-        //QUARTA FILA
+        // QUARTA FILA
         // Textfield Codigo 4
         gbcP.gridx = 0;
         gbcP.gridy = 5;
@@ -382,7 +383,7 @@ public class VentanaPlazas extends JFrame{
         JButton bnBorrar4 = new JButton("Borrar");
         panelMain.add(bnBorrar4, gbcP);
 
-        //QUINTA FILA
+        // QUINTA FILA
         // Textfield Codigo 5
         gbcP.gridx = 0;
         gbcP.gridy = 6;
@@ -445,8 +446,7 @@ public class VentanaPlazas extends JFrame{
         gbcP.gridwidth = 1;
         gbcP.fill = GridBagConstraints.HORIZONTAL;
         JButton bnBorrar5 = new JButton("Borrar");
-        panelMain.add(bnBorrar5, gbcP);   
-
+        panelMain.add(bnBorrar5, gbcP);
 
         JPanel panelFlechas = new JPanel();
         panelFlechas.setLayout(new GridBagLayout());
@@ -456,43 +456,138 @@ public class VentanaPlazas extends JFrame{
         gbc2.weighty = 0;
         gbc2.fill = GridBagConstraints.BOTH;
 
-        //Botones << >>
+        // Botones << >>
         gbc2.gridx = 0;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnizq = new JButton("<<");
-        panelFlechas.add(bnizq, gbc2);       
+        panelFlechas.add(bnizq, gbc2);
 
         gbc2.gridx = 1;
         gbc2.gridy = 0;
         gbc2.gridwidth = 1;
         gbc2.fill = GridBagConstraints.HORIZONTAL;
         JButton bnder = new JButton(">>");
-        panelFlechas.add(bnder, gbc2);       
-        
-        //Action Listeners
-        //Boton Guardar
+        panelFlechas.add(bnder, gbc2);
+
+        // Action Listeners
+        // Boton Guardar
 
         bnGuardar1.addActionListener(e -> {
-            Main.insertarPlazas(Pid1.getText(), Pnom1.getText(), Psalari1.getText(), PCodiSUP1.getText(), PInfSUP1.getText(), PTipoPlaza1.getText());
+            int codigo = Integer.parseInt(Pid1.getText());
+            String nombre = Pnom1.getText();
+            int salari = Integer.parseInt(Psalari1.getText());
+            int codigo_sup = Integer.parseInt(PCodiSUP1.getText());
+            String info_sup = PInfSUP1.getText();
+            String nom_TipPlaza = PTipoPlaza1.getText();
+            List<Plazas> lista = Plazas.obtenerPlazas();
+            boolean existe = false;
+            for (Plazas plaza : lista) {
+                if (plaza.getCodigo() == codigo) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Plazas.actualizarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            } else {
+                Plazas.insertarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            }
+            dispose();
+            new VentanaPlazas();
         });
-        bnGuardar1.addActionListener(e -> {
-            Main.insertarPlazas(Pid2.getText(), Pnom2.getText(), Psalari2.getText(), PCodiSUP2.getText(), PInfSUP2.getText(), PTipoPlaza2.getText());
+        bnGuardar2.addActionListener(e -> {
+            int codigo = Integer.parseInt(Pid2.getText());
+            String nombre = Pnom2.getText();
+            int salari = Integer.parseInt(Psalari2.getText());
+            int codigo_sup = Integer.parseInt(PCodiSUP2.getText());
+            String info_sup = PInfSUP2.getText();
+            String nom_TipPlaza = PTipoPlaza2.getText();
+            List<Plazas> lista = Plazas.obtenerPlazas();
+            boolean existe = false;
+            for (Plazas plaza : lista) {
+                if (plaza.getCodigo() == codigo) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Plazas.actualizarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            } else {
+                Plazas.insertarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            }
+            dispose();
+            new VentanaPlazas();
         });
-        bnGuardar1.addActionListener(e -> {
-            Main.insertarPlazas(Pid3.getText(), Pnom3.getText(), Psalari3.getText(), PCodiSUP3.getText(), PInfSUP3.getText(), PTipoPlaza3.getText());
+        bnGuardar3.addActionListener(e -> {
+            int codigo = Integer.parseInt(Pid3.getText());
+            String nombre = Pnom3.getText();
+            int salari = Integer.parseInt(Psalari3.getText());
+            int codigo_sup = Integer.parseInt(PCodiSUP3.getText());
+            String info_sup = PInfSUP3.getText();
+            String nom_TipPlaza = PTipoPlaza3.getText();
+            List<Plazas> lista = Plazas.obtenerPlazas();
+            boolean existe = false;
+            for (Plazas plaza : lista) {
+                if (plaza.getCodigo() == codigo) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Plazas.actualizarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            } else {
+                Plazas.insertarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            }
+            dispose();
+            new VentanaPlazas();
         });
-        bnGuardar1.addActionListener(e -> {
-            Main.insertarPlazas(Pid4.getText(), Pnom4.getText(), Psalari4.getText(), PCodiSUP4.getText(), PInfSUP4.getText(), PTipoPlaza4.getText());
+        bnGuardar4.addActionListener(e -> {
+            int codigo = Integer.parseInt(Pid4.getText());
+            String nombre = Pnom4.getText();
+            int salari = Integer.parseInt(Psalari4.getText());
+            int codigo_sup = Integer.parseInt(PCodiSUP4.getText());
+            String info_sup = PInfSUP4.getText();
+            String nom_TipPlaza = PTipoPlaza4.getText();
+            List<Plazas> lista = Plazas.obtenerPlazas();
+            boolean existe = false;
+            for (Plazas plaza : lista) {
+                if (plaza.getCodigo() == codigo) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Plazas.actualizarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            } else {
+                Plazas.insertarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            }
+            dispose();
+            new VentanaPlazas();
         });
-        bnGuardar1.addActionListener(e -> {
-            Main.insertarPlazas(Pid5.getText(), Pnom5.getText(), Psalari5.getText(), PCodiSUP5.getText(), PInfSUP5.getText(), PTipoPlaza5.getText());
+        bnGuardar5.addActionListener(e -> {
+            int codigo = Integer.parseInt(Pid5.getText());
+            String nombre = Pnom5.getText();
+            int salari = Integer.parseInt(Psalari5.getText());
+            int codigo_sup = Integer.parseInt(PCodiSUP5.getText());
+            String info_sup = PInfSUP5.getText();
+            String nom_TipPlaza = PTipoPlaza5.getText();
+            List<Plazas> lista = Plazas.obtenerPlazas();
+            boolean existe = false;
+            for (Plazas plaza : lista) {
+                if (plaza.getCodigo() == codigo) {
+                    existe = true;
+                }
+            }
+            if (existe) {
+                Plazas.actualizarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            } else {
+                Plazas.insertarPlaza(codigo, nombre, salari, codigo_sup, info_sup, nom_TipPlaza);
+            }
+            dispose();
+            new VentanaPlazas();
         });
 
-
-        //Boton Borrar
+        // Boton Borrar
         bnBorrar1.addActionListener(e -> {
+            Plazas.borrarPlaza(Integer.parseInt(Pid1.getText()));
             Pid1.setText("");
             Pnom1.setText("");
             Psalari1.setText("");
@@ -501,6 +596,7 @@ public class VentanaPlazas extends JFrame{
             PTipoPlaza1.setText("");
         });
         bnBorrar2.addActionListener(e -> {
+            Plazas.borrarPlaza(Integer.parseInt(Pid2.getText()));
             Pid2.setText("");
             Pnom2.setText("");
             Psalari2.setText("");
@@ -509,6 +605,7 @@ public class VentanaPlazas extends JFrame{
             PTipoPlaza2.setText("");
         });
         bnBorrar3.addActionListener(e -> {
+            Plazas.borrarPlaza(Integer.parseInt(Pid3.getText()));
             Pid3.setText("");
             Pnom3.setText("");
             Psalari3.setText("");
@@ -517,6 +614,7 @@ public class VentanaPlazas extends JFrame{
             PTipoPlaza3.setText("");
         });
         bnBorrar4.addActionListener(e -> {
+            Plazas.borrarPlaza(Integer.parseInt(Pid4.getText()));
             Pid4.setText("");
             Pnom4.setText("");
             Psalari4.setText("");
@@ -525,6 +623,7 @@ public class VentanaPlazas extends JFrame{
             PTipoPlaza4.setText("");
         });
         bnBorrar5.addActionListener(e -> {
+            Plazas.borrarPlaza(Integer.parseInt(Pid5.getText()));
             Pid5.setText("");
             Pnom5.setText("");
             Psalari5.setText("");
@@ -533,10 +632,51 @@ public class VentanaPlazas extends JFrame{
             PTipoPlaza5.setText("");
         });
 
-
         add(panelFlechas, BorderLayout.SOUTH);
         add(panelNavegacion, BorderLayout.NORTH);
         add(panelMain);
         setVisible(true);
+
+        List<Plazas> lista = Plazas.obtenerPlazas();
+        if (lista.size() > 0) {
+            Pid1.setText(String.valueOf(lista.get(0).getCodigo()));
+            Pnom1.setText(lista.get(0).getNombre());
+            Psalari1.setText(String.valueOf(lista.get(0).getSalari()));
+            PCodiSUP1.setText(String.valueOf(lista.get(0).getCodigo_sup()));
+            PInfSUP1.setText(lista.get(0).getInfo_sup());
+            PTipoPlaza1.setText(lista.get(0).getNom_TipPlaza());
+        }
+        if (lista.size() > 1) {
+            Pid2.setText(String.valueOf(lista.get(1).getCodigo()));
+            Pnom2.setText(lista.get(1).getNombre());
+            Psalari2.setText(String.valueOf(lista.get(1).getSalari()));
+            PCodiSUP2.setText(String.valueOf(lista.get(1).getCodigo_sup()));
+            PInfSUP2.setText(lista.get(1).getInfo_sup());
+            PTipoPlaza2.setText(lista.get(1).getNom_TipPlaza());
+        }
+        if (lista.size() > 2) {
+            Pid3.setText(String.valueOf(lista.get(2).getCodigo()));
+            Pnom3.setText(lista.get(2).getNombre());
+            Psalari3.setText(String.valueOf(lista.get(2).getSalari()));
+            PCodiSUP3.setText(String.valueOf(lista.get(2).getCodigo_sup()));
+            PInfSUP3.setText(lista.get(2).getInfo_sup());
+            PTipoPlaza3.setText(lista.get(2).getNom_TipPlaza());
+        }
+        if (lista.size() > 3) {
+            Pid4.setText(String.valueOf(lista.get(3).getCodigo()));
+            Pnom4.setText(lista.get(3).getNombre());
+            Psalari4.setText(String.valueOf(lista.get(3).getSalari()));
+            PCodiSUP4.setText(String.valueOf(lista.get(3).getCodigo_sup()));
+            PInfSUP4.setText(lista.get(3).getInfo_sup());
+            PTipoPlaza4.setText(lista.get(3).getNom_TipPlaza());
+        }
+        if (lista.size() > 4) {
+            Pid5.setText(String.valueOf(lista.get(4).getCodigo()));
+            Pnom5.setText(lista.get(4).getNombre());
+            Psalari5.setText(String.valueOf(lista.get(4).getSalari()));
+            PCodiSUP5.setText(String.valueOf(lista.get(4).getCodigo_sup()));
+            PInfSUP5.setText(lista.get(4).getInfo_sup());
+            PTipoPlaza5.setText(lista.get(4).getNom_TipPlaza());
+        }
     }
 }
